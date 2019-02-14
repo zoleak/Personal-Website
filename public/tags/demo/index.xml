@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Demo on Kevin Zolea</title>
+    <link>/tags/demo/</link>
+    <description>Recent content in Demo on Kevin Zolea</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy;2019 Kevin Zolea</copyright>
+    <lastBuildDate>Wed, 27 Apr 2016 00:00:00 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/demo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Case Study Analysis of Easterly Wave Formation in the East Pacific</title>
+      <link>/project/colorado_state_project/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 -0400</pubDate>
+      
+      <guid>/project/colorado_state_project/</guid>
+      <description>Easterly waves are weak troughs of low pressure that propagate westward across the Atlantic and East Pacific. These disturbances seed the majority of East Pacific and Atlantic tropical cyclones. Most easterly waves originate from Africa, although recent work indicates that they can also be locally generated in the East Pacific. This study analyzed the development and origins of the two precursor disturbances that eventually became Hurricanes Patricia and John in the East Pacific.</description>
+    </item>
+    
+  </channel>
+</rss>

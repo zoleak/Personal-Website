@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>admin on Kevin Zolea</title>
+    <link>/authors/admin/</link>
+    <description>Recent content in admin on Kevin Zolea</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy;2019 Kevin Zolea</copyright>
+    
+	<atom:link href="/authors/admin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/author/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/author/admin/</guid>
+      <description>I am an Environmental Specialist employed with the NJ Department of Environmental Protection. I work with the Division of Water Monitoring &amp;amp; Standards, where we research key water quality issues throughout the state. I utilize different computer software such as R, ArcGIS, Python, etc. to analyze the vast amount of data we collect.
+Solving key environmental issues and gaining actionable insight from data ignites a fire inside me. Being that a majority of my work involves making data driven decisions, I have gained extensive experience with data science techniques.</description>
+    </item>
+    
+  </channel>
+</rss>
