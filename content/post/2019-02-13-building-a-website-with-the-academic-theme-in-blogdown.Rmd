@@ -31,6 +31,6 @@ Before you jump right in I recommend reading some online material and watching s
 
 3.[Making a Website with Blogdown](https://www.youtube.com/watch?v=syWAKaj-4ck&t=649s)
 
-
+4.[Academic Theme Documentation](https://sourcethemes.com/academic/docs/) if your going to use the academic theme
 
 
