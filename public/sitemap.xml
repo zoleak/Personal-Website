@@ -4,6 +4,14 @@
     
     <url>
     
+      <loc>/post/creating-a-website-with-the-academic-theme-in-blogdown/</loc>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/project/ncep_project/</loc>
       <lastmod>2019-02-11T00:00:00-04:00</lastmod>
     </url>
@@ -126,8 +134,17 @@
     
     <url>
     
+      <loc>/categories/hugo/</loc>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/</loc>
-      <lastmod>2019-02-11T00:00:00-04:00</lastmod>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -146,6 +163,15 @@
     
       <loc>/tags/meteorology/</loc>
       <lastmod>2019-02-11T00:00:00-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/</loc>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -179,15 +205,8 @@
     
     <url>
     
-      <loc>/talk/</loc>
-      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/slides/</loc>
+      <loc>/categories/r/</loc>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -195,7 +214,17 @@
     
     <url>
     
-      <loc>/slides/example-slides/</loc>
+      <loc>/tags/r/</loc>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/talk/</loc>
+      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
     </url>
     
   
@@ -212,6 +241,24 @@
     <url>
     
       <loc>/authors/admin/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/categories/blogdown/</loc>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/blogdown/</loc>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

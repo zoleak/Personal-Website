@@ -1,0 +1,17 @@
+---
+title: Creating a website with the academic theme in blogdown
+author: Kevin Zolea
+date: '2019-02-13'
+slug: Creating-a-website-with-the-academic-theme-in-blogdown
+categories:
+  - blogdown
+  - R
+  - Hugo
+tags:
+  - blogdown
+  - R
+image: 
+  caption: ''
+  focal_point: ''
+---
+For years now I have been contemplating developing my first personal website. I have been told by a countless number of people that it is a great way to showcase your skills and tell your story. I have been meaning to make one for some time now but I kept coming up with excuses. The two biggest excuses I kept telling myself was that it would be too difficult & it would cost money. Boy was I wrong. It wasn't until I started using R this past year that I realized how wrong I was.

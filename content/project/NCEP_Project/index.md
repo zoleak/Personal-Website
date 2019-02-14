@@ -16,7 +16,7 @@ url_custom:
  # icon_pack: fab
  # name: Follow
  # url: https://twitter.com/georgecushen
-url_pdf: "NCEP_Poster.pdf"
+url_pdf: "pdf/NCEP_Poster.pdf"
 url_slides: ""
 url_video: ""
 
