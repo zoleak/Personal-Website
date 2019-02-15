@@ -379,7 +379,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    5 min read
   </span>
   
 
@@ -481,7 +481,7 @@
 
 <div id="introduction" class="section level1">
 <h1>Introduction:</h1>
-<p>For years now I have been contemplating developing my first personal website. I have been told by a countless number of people that it is a great way to showcase your skills and tell your story. I have been meaning to make one for some time now but I kept coming up with excuses. The two biggest excuses I kept telling myself was that it would be too difficult &amp; it would cost money. Boy was I wrong. It wasn’t until I started using R this past year that I realized how wrong I was. After a quick google search I came across the <a href="https://cran.r-project.org/web/packages/blogdown/blogdown.pdf" target="_blank">blogdown</a> package. Blogdown is an amazing package in which you can create blogs and websites with <a href="https://rmarkdown.rstudio.com/" target="_blank">R Markdown</a>. Now I’m not saying that this stuff is extremely easy but if someone like myself(absolutely no website development knowledge) can do it, <strong>YOU CAN TOO!</strong> This blog post isn’t a sure fire way to do it but more of an overview of how I did it. I would also like to point out that this is a <strong>very basic introduction </strong> to creating a blog/website with blogdown. The amount of things you can do with this package is almost endless.. especially if you have an understanding of CSS, HTML, and Javascript.</p>
+<p>For years now I have been contemplating developing my first personal website. I have been told by a countless number of people that it is a great way to showcase your skills and tell your story. I have been meaning to make one for some time now but I kept coming up with excuses. The two biggest excuses I kept telling myself was that it would be too difficult &amp; it would cost money. Boy was I wrong. It wasn’t until I started using R this past year that I realized how wrong I was. After a quick google search I came across the <a href="https://cran.r-project.org/web/packages/blogdown/blogdown.pdf" target="_blank">blogdown</a> package. <code>Blogdown</code> is an amazing package in which you can create blogs and websites with <a href="https://rmarkdown.rstudio.com/" target="_blank">R Markdown</a>. Now I’m not saying that this stuff is extremely easy but if someone like myself(absolutely no website development knowledge) can do it, <strong>YOU CAN TOO!</strong> This blog post isn’t a sure fire way to do it but more of an overview of how I did it. I would also like to point out that this is a <strong>very basic introduction </strong> to creating a blog/website with blogdown. The amount of things you can do with this package is almost endless.. especially if you have an understanding of CSS, HTML, and Javascript.</p>
 <div class="figure">
 <img src="https://media.giphy.com/media/Rl9Yqavfj2Ula/giphy.gif" />
 
@@ -503,24 +503,39 @@
 <h1>Creating a Repository and Cloning it</h1>
 <p>1.I am going to assume you have used <a href="https://github.com/" target="_blank">GitHub</a> before but if you haven’t that is completely fine. You can check out this <a href="https://guides.github.com/" target="_blank">site</a> to get a better understanding. Once you have a good understanding of GitHub and have an account created you need to create a new repository. You can name this repository anything you want but it’s usually best practice to give it a meaningful name.</p>
 <div class="figure">
-<img src="/post/creating-a-website-with-the-academic-theme-in-blogdown/screenshot1.png" />
+<img src="/img/screenshot1.png" />
 
 </div>
 <p>Once you click create repository you should be on your repository page.</p>
 <p>2.Now you have to create a local copy of your repository or in other words “clone it”. To do this click the green “Clone or Download” button on the right hand side and copy the url displayed.</p>
 <div class="figure">
-<img src="/post/creating-a-website-with-the-academic-theme-in-blogdown/screenshot2.png" />
+<img src="/img/screenshot2.png" />
 
 </div>
 <ol start="3" style="list-style-type: decimal">
 <li>So in order to “clone” the repo with the url that you just copied, your going to have to use git. If you don’t know anything about git I recommend reading <a href="https://happygitwithr.com/" target="_blank">Happy Git and GitHub for the useR</a>. Now you can do this in numerous different ways. You can open <a href="https://macpaw.com/how-to/use-terminal-on-mac">Terminal</a> if your on a Mac, if your on windows you can open <a href="https://gitforwindows.org/" target="_blank">Git Bash</a> or you can use the Terminal in Rstudio. Personally, I like to use Rstudio. So if your in Rstudio you have to make sure that you navigate to your working directory. You can see your working directory by typing <code>pwd</code> and to change directories use <code>cd</code>. Type <code>git clone</code> and then paste the URL that you copied before.</li>
 </ol>
 <p>The command should look like this:</p>
-<div class="figure">
-<img src="/img/clone.png" />
-
-</div>
+<p><code>git clone https://github.com/zoleak/Personal_Website.git</code></p>
 <p>And this is what prints to the terminal window:</p>
+<p>If all went well then you should see a folder with the files in your repo in the directroy that you chose.</p>
+</div>
+<div id="getting-started-with-the-blogdown-package-in-rstudio" class="section level1">
+<h1>Getting started with the blogdown package in Rstudio</h1>
+<p>The time has finally come to start creating the site.</p>
+<p>1.Open Rstudio and install <code>blogdown</code>. I recommend installing the development version, which can be done like this:</p>
+<p><code>remotes::install_github('rstudio/blogdown')</code></p>
+<p>2.Since <code>blogdown</code> is based on the static site generator Hugo, you need to install Hugo. You can easily do this by using a function in <code>blogdown</code></p>
+<p><code>install_hugo()</code></p>
+<p>3.Use the top menu buttons in Rstudio to browse to the directory on your computer where your GitHub repo is.</p>
+<p>`File-&gt;New Project-&gt;Existing Directory</p>
+<p>4.Pick the theme you want to use. There are numerous different themes to pick from. I used the academic theme so I will use this one for the example. To browse themes <a href="https://themes.gohugo.io/" target="_blank">click here</a></p>
+<p>5.Create site using the <code>new_site()</code> function</p>
+<p>There are a couple different options to create the site but I believe the best one is using the <code>new_site()</code> function. You can do this like so:</p>
+<p><code>blogdown::new_site(theme = &quot;gcushen/hugo-academic&quot;)</code></p>
+<p>An example site should now be previewed in the Viewer panel of Rstudio.</p>
+<p>6.Personalize the website</p>
+<p>I am not going to go into this because I am still learning how to do this myself. The main things you should know are that you can edit the example site in any way you would like. You can change the title, fonts, color scheme, widgets used, etc. If you decide to use the Academic Theme look over the <a href="https://sourcethemes.com/academic/docs/" target="_blank">documentation</a> . The author of the theme goes into great detail on how to get started and the different levels of cusomization you can do. The last thing I am going to touch base on is how to get your new site deployed to Netlify.</p>
 </div>
 
     </div>
