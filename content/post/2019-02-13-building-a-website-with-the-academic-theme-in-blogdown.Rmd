@@ -24,6 +24,7 @@ For years now I have been contemplating developing my first personal website. I 
 
 ![](https://media.giphy.com/media/Rl9Yqavfj2Ula/giphy.gif)
 
+
 ## Prerequisites:
 Before you jump right in I recommend reading some online material and watching some youtube videos. Here is a list of the resources that helped me a lot.
 
@@ -33,6 +34,30 @@ Before you jump right in I recommend reading some online material and watching s
 
 3.[Making a Website with Blogdown](https://www.youtube.com/watch?v=syWAKaj-4ck&t=649s)
 
-4.[Academic Theme Documentation](https://sourcethemes.com/academic/docs/) if your going to use the academic theme
+4.[Academic Theme Documentation](https://sourcethemes.com/academic/docs/) (if your going to use the academic theme)
+
+5.[Making a Website Using Blogdown, Hugo, and GitHub pages](https://amber.rbind.io/blog/2016/12/19/creatingsite/)
+
+Once you review the above material you should have a pretty firm grasp on how to get the ball rolling. One of the biggest hurdles I had was creating my site with the Hugo Academic Theme. It wasn't until I found this [post](https://stackoverflow.com/questions/54300535/unable-to-create-new-site-using-hugo-academic-theme) on stackoverflow that I was able to figure out what the problem was. There was a breaking change in the hugo-academic theme, so I had to download the development verison of blogdown. Not sure if this is still a thing but if you have the same problem definitly check out that post! The last piece of advice I will give before we get started is to make sure you check what the minimum hugo verision is for the theme you want to use. You can do this by going to the [hugo website](https://themes.gohugo.io/).
+Pick the theme you want to use and look at the line that says ```Minimum Hugo Verision:``` Here's an example
+![](/post/2019-02-13-building-a-website-with-the-academic-theme-in-blogdown_files/min_version.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
