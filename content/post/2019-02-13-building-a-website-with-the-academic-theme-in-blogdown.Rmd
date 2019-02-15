@@ -45,7 +45,7 @@ Pick the theme you want to use and look at the line that says ```Minimum Hugo Ve
 
 I am going to assume you have used [GitHub](https://github.com/) before but if you haven't that is completely fine. You can check out this [site](https://guides.github.com/) to get a better understanding. Once you have a good understanding of GitHub and have an account created you need to create a new repository. You can name this repository anything you want but it's usually best practice to give it a meaningful name.
 
-
+![](/post/creating-a-website-with-the-academic-theme-in-blogdown/screenshot1.png)
 
 
 

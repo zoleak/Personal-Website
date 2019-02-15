@@ -40,6 +40,10 @@
 &lt;div id=&#34;step-1-create-new-repository-in-github&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Step 1: Create New Repository in GitHub&lt;/h1&gt;
 &lt;p&gt;I am going to assume you have used &lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt; before but if you haven’t that is completely fine. You can check out this &lt;a href=&#34;https://guides.github.com/&#34;&gt;site&lt;/a&gt; to get a better understanding. Once you have a good understanding of GitHub and have an account created you need to create a new repository. You can name this repository anything you want but it’s usually best practice to give it a meaningful name.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/post/creating-a-website-with-the-academic-theme-in-blogdown/screenshot1.png&#34; /&gt;
+
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
