@@ -2,11 +2,12 @@
 active: true
 filter:
 - name: All
-  tag: '*'
-- name: Deep Learning
-  tag: Deep Learning
-- name: Other
-  tag: Demo
+  tag: "*"
+- name: Meteorology
+  tag: Meteorology
+- name: Shiny
+  tag: Shiny
+  
 filter_default: 0
 flip_alt_rows: false
 folder: project

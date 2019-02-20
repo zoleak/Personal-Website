@@ -98,12 +98,17 @@ contact_links = [
 # Load CSS and JS plugins
 #   E.g. To load `/assets/css/custom.css`, set `plugins_css = ["custom"]`.
 #   E.g. To load `/assets/js/custom.js`, set `plugins_js = ["custom"]`.
-plugins_css = []
+plugins_css = ["custom"]
 plugins_js  = []
 
 ############################
 ## Advanced options       ##
 ############################
+  # FOOTER PARAMETERS
+stacklogo = "logo/earth.png"
+legalblurb = "All opinions expressed here are my own and do not necessarily represent those of any other agencies or groups."
+
+
 
 # Get user avatars from Gravatar.com? (true/false)
 gravatar = false

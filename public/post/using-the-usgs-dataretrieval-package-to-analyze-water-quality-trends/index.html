@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.0.0">
+  <meta name="generator" content="Hugo 0.54.0" />
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Kevin Zolea">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction on using the USGS dataRetrieval package to create a graph in ggplot2 to visualize total dissolved solid">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+    
+    
+    
+    
+      
+    
+    
+    
+    <link rel="stylesheet" href="/css/academic.7133d16cb8f0bb36c07082ec8f8569d2.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-134345197-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Kevin Zolea">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Kevin Zolea">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Kevin Zolea">
+  <meta property="og:url" content="/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/">
+  <meta property="og:title" content="Using the USGS dataRetrieval package to analyze continuous water quality data | Kevin Zolea">
+  <meta property="og:description" content="Introduction on using the USGS dataRetrieval package to create a graph in ggplot2 to visualize total dissolved solid"><meta property="og:image" content="/img/headers/colorado_water.jpg">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-02-16T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-02-16T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Using the USGS dataRetrieval package to analyze continuous water quality data | Kevin Zolea</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Kevin Zolea</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#posts">
+            
+            <span>Blog</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/files/resume.pdf">
+            
+            <span>Resume</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<div id="THECONTENT">  
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+<div class="article-header">
+  
+  
+  <img src="/img/headers/colorado_water.jpg" class="article-banner" itemprop="image" alt="">
+  
+
+  
+</div>
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Using the USGS dataRetrieval package to analyze continuous water quality data</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2019-02-16 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-02-16 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Feb 16, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="/categories/r/">R</a>, 
+    
+    <a href="/categories/roadsalt/">Roadsalt</a>, 
+    
+    <a href="/categories/water-quality/">Water Quality</a>
+    
+  </span>
+  
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Using%20the%20USGS%20dataRetrieval%20package%20to%20analyze%20continuous%20water%20quality%20data&amp;url=%2fpost%2fusing-the-usgs-dataretrieval-package-to-analyze-water-quality-trends%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fusing-the-usgs-dataretrieval-package-to-analyze-water-quality-trends%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fusing-the-usgs-dataretrieval-package-to-analyze-water-quality-trends%2f&amp;title=Using%20the%20USGS%20dataRetrieval%20package%20to%20analyze%20continuous%20water%20quality%20data"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fusing-the-usgs-dataretrieval-package-to-analyze-water-quality-trends%2f&amp;title=Using%20the%20USGS%20dataRetrieval%20package%20to%20analyze%20continuous%20water%20quality%20data"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Using%20the%20USGS%20dataRetrieval%20package%20to%20analyze%20continuous%20water%20quality%20data&amp;body=%2fpost%2fusing-the-usgs-dataretrieval-package-to-analyze-water-quality-trends%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+
+<div id="introduction" class="section level3">
+<h3>Introduction</h3>
+<p>Being that I work for the <a href="https://www.nj.gov/dep/wms/" target="_blank">Division of Water Monitoring &amp; Standards</a>, I have to analyze a lot of water quality data. A majority of the data is in house from the samples we collect but most times I have to download data from online sources. These online sources usually consist of the same organizations and most have a pretty straight forward way of getting access to the data. However, the process of going to that organization’s website and getting whatever data you need is a bit time consuming. I always look for ways that I can automate a task and not have to do the same things over and over again. It wasn’t until recently that I learned about the <a href="https://cran.r-project.org/web/packages/dataRetrieval/dataRetrieval.pdf" target="_blank">dataRetrieval</a> package, which can do exactly that.</p>
+</div>
+<div id="what-is-the-dataretrieval-package-how-does-it-work" class="section level3">
+<h3>What is the <code>dataRetrieval</code> package &amp; how does it work?</h3>
+<p>The <code>dataRetrieval</code> package is a collection of functions to help retrieve U.S. Geological Survey (<a href="https://www.usgs.gov" target="_blank">USGS</a>) and U.S. Environmental Protection Agency (<a href="https://www.epa.gov" target="_blank">EPA</a>) water quality and hydrology data from web services. With the dataRetrieval package you can discover, access, retrieve, and parse water data. The data comes from numerous different sources. The image below provides a nice overview of the different sources, data types, metadata, time series type, formats, and output.</p>
+<div class="figure">
+<img src="/img/data_source_example.png" />
+
+</div>
+<p>I’m not going to go into all the different functions and usage of the <code>dataRetrieval</code> package but if you would like to learn more here are some of the sources I found the most useful:</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/dataRetrieval/vignettes/dataRetrieval.html#usgs-web-retrievals" target="_blank">Introduction to the dataRetrieval package</a></li>
+<li><a href="https://acwi.gov/monitoring/conference/2016/0_monday_may2/A1B1/dataRetrieval%20Tutorial_secure.pdf" target="_blank">dataRetrieval Tutorial</a></li>
+<li><a href="https://pubs.usgs.gov/tm/04/a10/pdf/tm4A10.pdf" target="_blank">USGS PDF</a></li>
+</ul>
+</div>
+<div id="what-i-will-show-in-this-blog-post" class="section level3">
+<h3>What I will show in this blog post</h3>
+<p>In this blog post I will discuss the usage of the <code>readNWISuv()</code> function and how to create a nice plot with the <code>ggplot2</code> package. The <code>readNWISuv()</code> function imports data from the <a href="https://waterdata.usgs.gov/nwis" target="_blank">NWIS</a> web service. Specifically, this function retrieves instantaneous water quality data. In order to use this function you must have the following arguments:</p>
+<p><code>readNWISuv(siteNumbers, parameterCd, startDate = &quot;&quot;, endDate = &quot;&quot;,tz = &quot;UTC&quot;)</code></p>
+<ul>
+<li><code>siteNumbers</code>: A character vector of USGS site numbers (or multiple sites). This is usually an 8 digit number. You can use this <a href="https://maps.waterdata.usgs.gov/mapper/index.html" target="_blank">map</a> to find a site your interested in.</li>
+<li><code>parameterCd</code>: Character USGS parameter code.This is usually an 5 digit number. To find a parameter code of interest you can type in <code>parameterCdFile</code>. This allows you to explore the USGS parameter codes.</li>
+<li><code>startDate</code>: character starting date for data retrieval in the form YYYY-MM-DD.</li>
+<li><code>endDate</code>: character ending date for data retrieval in the form YYYY-MM-DD.</li>
+<li><code>tz</code>: character to set timezone attribute of dateTime. Default is “UTC”, and converts the date times to UTC. There are numerous different possible values to use. For example, if you wanted it to be in Eastern Standard Time, you would use <code>&quot;America/New_York&quot;</code></li>
+</ul>
+</div>
+<div id="install-and-load-dataretrieval-package-from-cran" class="section level3">
+<h3>Install and load <code>dataRetrieval</code> package from cran</h3>
+<p>```install.packages(“dataRetrieval”)</p>
+<p>library(dataRetrieval) ```</p>
+</div>
+<div id="pull-data-with-the-readnwisuv-function" class="section level3">
+<h3>Pull data with the <code>readNWISuv()</code> function</h3>
+<p>For my analysis I am going to pull continuous specific conductance (SC) data for a site of intereset in NJ. With this specific conductance data, I will calculate Total dissolved solids (TDS). I will do this by using an equation from a correlation I made between SC &amp; TDS. Being that this isn’t the focus of the post, I will not go in detail about this. However, in a subsequent post I will explain how I did this.</p>
+<p><code>USGS_continuous_sc_data&lt;-readNWISuv(&quot;01408029&quot;,&quot;00095&quot;,tz = &quot;America/New_York&quot;)</code></p>
+<p>For simplicity, I am only looking up one site and one type of parameter. You can look up multiple sites and parameters in one pull. Now lets take a look at a preview of the pull we just made.</p>
+<pre><code>##   agency_cd  site_no            dateTime X_00095_00000 X_00095_00000_cd
+## 1      USGS 01408029 2007-10-01 01:00:00           246                A
+## 2      USGS 01408029 2007-10-01 01:15:00           246                A
+## 3      USGS 01408029 2007-10-01 01:30:00           246                A
+## 4      USGS 01408029 2007-10-01 01:45:00           246                A
+## 5      USGS 01408029 2007-10-01 02:00:00           246                A
+## 6      USGS 01408029 2007-10-01 02:15:00           246                A
+##              tz_cd
+## 1 America/New_York
+## 2 America/New_York
+## 3 America/New_York
+## 4 America/New_York
+## 5 America/New_York
+## 6 America/New_York</code></pre>
+<p>The names of the columns in the dataframe can be described as follows:</p>
+<ul>
+<li><p><code>agency_cd</code>: The NWIS code for the agency reporting the data</p></li>
+<li><p><code>site_no</code>: The USGS site number</p></li>
+<li><p><code>dateTime</code>: The date and time of the value converted to UTC</p></li>
+<li><p><code>X_00095_00000</code>: The values of the parameter we gave to the function.</p></li>
+<li><p><code>X_00095_00000_cd</code>: The statistic code</p></li>
+<li><p><code>tz_cd</code>: The time zone code for dateTime</p></li>
+</ul>
+<p>You can clean up the names with the <code>reenameNWISColumns()</code> function if you’d like.</p>
+</div>
+<div id="we-have-the-data-now-what" class="section level3">
+<h3>We have the data… now what?</h3>
+<p>Now that we have retrieved the data, we can now start manipulating it and create a plot. We will create the plot using the <code>ggplot2</code> package. I mentioned before that I was going to calculate TDS. Just to give some background… the reason I am doing this is because of a project I am working on that deals with roadsalt. I figured I would include it in this post just to show that you have a great deal of options in R. I will discuss my roadsalt research in more detail in later posts!</p>
+</div>
+<div id="what-is-the-ggplot2-package" class="section level3">
+<h3>What is the ggplot2 package?</h3>
+<p>The <a href="https://www.rdocumentation.org/packages/ggplot2/versions/3.1.0" target="_blank">ggplot2</a> package is a system for ‘declaratively’ creating graphics, based on “The Grammar of Graphics”. It is a great way to visualize the data you are analyzing. With ggplot2, you have a lot of flexibility with the amount of customization you can give your plot. In my opinion, I think it is very easy to learn and it produces beautiful high quality plots. To learn more about ggplot2, I recommend <a href="http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html" target="_blank">The Complete ggplot2 Tutorial</a>.</p>
+</div>
+<div id="full-code-used-to-create-plot" class="section level3">
+<h3>Full code used to create plot:</h3>
+<pre><code>library(dataRetrieval)
+library(ggplot2)
+library(dplyr)
+library(plyr)
+
+### Vector of sites with continuous specific conductance data ###
+siteNumber&lt;-c(&quot;01408029&quot;)
+
+### Parameter code for specific conductance ###
+parameterCd&lt;-&quot;00095&quot;
+
+### Function that retrieves near real time continuous data for specific sites and parameters ###
+USGS_continuous_sc_data&lt;-readNWISuv(siteNumber,parameterCd,tz = &quot;America/New_York&quot;)
+
+### Filter dataframe ###
+USGS_continuous_sc_data&lt;-USGS_continuous_sc_data%&gt;%
+  dplyr::select(site_no,dateTime,X_00095_00000)%&gt;%
+  dplyr::rename(Site = site_no,Specific_conductance = X_00095_00000)
+  
+### Calculate TDS based on continuous Specific Conductance data and eq from correlation plots ###
+final_USGS_data_TDS&lt;-USGS_continuous_sc_data%&gt;%
+  dplyr::mutate(Calculated_TDS = Specific_conductance * 0.572 +6.19)
+
+### theme for plots ###
+graph_theme_T&lt;- theme_linedraw()+
+  theme(plot.title=element_text(size=15, face=&quot;bold&quot;,vjust=0.5,hjust = 0.5),
+        plot.subtitle = element_text(size=15, face=&quot;bold&quot;,vjust=0.5,hjust = 0.5),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        plot.background = element_blank(),
+        panel.background = element_blank(),
+        plot.margin = unit(c(1.5,2,4,2), &quot;lines&quot;), 
+        legend.position = &quot;bottom&quot;,
+        legend.background = element_blank(),
+        legend.text=element_text(size=10, face=&quot;bold&quot;))
+        
+### Make plot of data ###
+      
+p&lt;-ggplot(final_USGS_data_TDS, aes(x=dateTime,y=Calculated_TDS)) +
+  geom_line(aes(color = &quot;USGS Continuous Data&quot;),
+    stat = &quot;identity&quot;,size=1.3)+
+  scale_y_continuous(expand = c(0, 0), limits = c(0, max(final_USGS_data_TDS$Calculated_TDS)))+
+  ggtitle(&quot;Total Dissolved Solids (TDS) Concentration (mg/L)&quot;) +
+  labs(subtitle =paste(&quot;USGS Site:&quot;,final_USGS_data_TDS$Site,sep = &#39;&#39;))+
+  xlab(&quot;Year&quot;) + ylab(&quot;TDS Concentration (mg/L)&quot;) +
+  geom_hline(aes(yintercept = 500,color=&quot;Freshwater Aquatic Life Criteria for TDS = 500 mg/L&quot;),size=1.3,alpha=0.6)+
+  scale_color_manual(&quot;&quot;,
+                     values = c(&quot;USGS Continuous Data&quot;=&quot;#037907&quot;,
+                                &quot;Freshwater Aquatic Life Criteria for TDS = 500 mg/L&quot;=&quot;red&quot;))+
+  
+  graph_theme_T 
+
+p
+  </code></pre>
+</div>
+<div id="final-product" class="section level3">
+<h3>Final Product:</h3>
+<p><img src="/post/2019-02-16-using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="what-is-this-plot-showing" class="section level3">
+<h3>What is this plot showing?</h3>
+<p>This plot is showing the calculated TDS concentration for the selected site from 2007- present day. The red line indicates the Freshwater Aquatic Life Criteria for TDS. In the most simpliest terms, when the graph shows the TDS concentration (green line) going over the red line, TDS is over the standard.</p>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<p>As you can see, the <code>dataRetrieval</code> package is a very useful tool for water quality analysis. There is sooo much data you can obtain with just the ease of writing a few lines of code! I only touched base on <strong>1</strong> function! There are so many different functions you can use to gain access to all different types of water quality data. Definitly look over the resources I included in the beginning if you want to learn more. I know this post was very basic but I hope it has helped you in some way. If you have any questions feel free to reach out to me!</p>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/r/">R</a>
+  
+  <a class="badge badge-light" href="/tags/water-quality/">Water Quality</a>
+  
+  <a class="badge badge-light" href="/tags/roadsalt/">Roadsalt</a>
+  
+</div>
+
+
+
+
+    
+      
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  
+  <img class="portrait mr-3" src="/author/admin/avatar_hu3d3a9716da555ce7604b86e918338db9_977878_250x250_fill_box_center_2.png" itemprop="image" alt="Avatar">
+  
+
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="/authors/admin">Kevin Zolea</a></h5>
+    <h6 class="card-subtitle">Environmental Specialist</h6>
+    
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="/#contact" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.linkedin.com/in/kevinmichaelzolea/" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/zoleak" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/creating-a-website-with-the-academic-theme-in-blogdown/">Creating a website with the academic theme in blogdown</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Kevin Zolea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  
+  <div id="botbar1"> </div>
+  <div style="position: relative; width: 0; height: 0; z-index: 200;">
+    <div id="feynmanfoot" style="background-image:url('//img/');"></div>
+  </div>
+  <div style="height: 20px">
+    
+  </div>
+  
+  <div class="container">
+
+
+      <div class="row" id="footer-columns">
+        <div class="col-sm-4" id="footer-col-1">
+          <img src="/img/logo/earth.png"> 
+        </div>
+        <div class="col-sm-4" id="footer-col-1">
+          
+          All opinions expressed here are my own and do not necessarily represent those of any other agencies or groups.
+        </div>
+        <div class="col-sm-4" id="footer-col-1">
+          Powered by the
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> engine
+          
+          Adapted from <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic</a>.
+          
+          &copy Kevin Zolea 2019
+        </div>
+      </div>
+
+
+
+
+
+
+  </div> 
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div> 
+
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//Kevin%20Zolea.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.db3d6f315d07c75ac150285a72ff5e1f.js"></script>
+
+  </body>
+</html>
+

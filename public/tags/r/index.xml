@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;2019 Kevin Zolea</copyright>
-    <lastBuildDate>Wed, 13 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 16 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using the USGS dataRetrieval package to analyze continuous water quality data</title>
+      <link>/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</link>
+      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</guid>
+      <description>Introduction Being that I work for the Division of Water Monitoring &amp;amp; Standards, I have to analyze a lot of water quality data. A majority of the data is in house from the samples we collect but most times I have to download data from online sources. These online sources usually consist of the same organizations and most have a pretty straight forward way of getting access to the data.</description>
+    </item>
     
     <item>
       <title>Creating a website with the academic theme in blogdown</title>
@@ -18,7 +27,7 @@
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/creating-a-website-with-the-academic-theme-in-blogdown/</guid>
-      <description>Introduction:For years now I have been contemplating developing my first personal website. I have been told by a countless number of people that it is a great way to showcase your skills and tell your story. I have been meaning to make one for some time now but I kept coming up with excuses. The two biggest excuses I kept telling myself was that it would be too difficult &amp;amp; it would cost money.</description>
+      <description>Introduction: I have been told by a countless number of people that creating a personal website is a great way to showcase your skills and tell your story. I have been contemplating this for some time but kept procrastinating. The two biggest excuses I kept telling myself was that it would be too difficult &amp;amp; it would cost money. Boy was I wrong! It wasn’t until I started using R this past year that I realized how wrong I was.</description>
     </item>
     
   </channel>

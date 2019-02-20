@@ -4,6 +4,14 @@
     
     <url>
     
+      <loc>/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</loc>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/post/creating-a-website-with-the-academic-theme-in-blogdown/</loc>
       <lastmod>2019-02-13T00:00:00+00:00</lastmod>
     </url>
@@ -28,6 +36,14 @@
     
     <url>
     
+      <loc>/project/census_app/</loc>
+      <lastmod>2019-02-11T00:00:00-04:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/tutorial/example/</loc>
       <lastmod>2018-09-09T00:00:00-04:00</lastmod>
     </url>
@@ -38,14 +54,6 @@
     
       <loc>/tutorial/</loc>
       <lastmod>2018-09-09T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/privacy/</loc>
-      <lastmod>2018-06-28T00:00:00-04:00</lastmod>
     </url>
     
   
@@ -144,7 +152,7 @@
     <url>
     
       <loc>/</loc>
-      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -171,7 +179,7 @@
     <url>
     
       <loc>/post/</loc>
-      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -206,7 +214,7 @@
     <url>
     
       <loc>/tags/r/</loc>
-      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -215,7 +223,7 @@
     <url>
     
       <loc>/categories/r/</loc>
-      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -231,8 +239,53 @@
     
     <url>
     
+      <loc>/tags/roadsalt/</loc>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/categories/roadsalt/</loc>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/shiny/</loc>
+      <lastmod>2019-02-11T00:00:00-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/tags/</loc>
       <lastmod>2019-02-11T00:00:00-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/water-quality/</loc>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/categories/water-quality/</loc>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

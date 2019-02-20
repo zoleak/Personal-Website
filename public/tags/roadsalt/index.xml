@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Roadsalt on Kevin Zolea</title>
+    <link>/tags/roadsalt/</link>
+    <description>Recent content in Roadsalt on Kevin Zolea</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy;2019 Kevin Zolea</copyright>
+    <lastBuildDate>Sat, 16 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/roadsalt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using the USGS dataRetrieval package to analyze continuous water quality data</title>
+      <link>/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</link>
+      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</guid>
+      <description>Introduction Being that I work for the Division of Water Monitoring &amp;amp; Standards, I have to analyze a lot of water quality data. A majority of the data is in house from the samples we collect but most times I have to download data from online sources. These online sources usually consist of the same organizations and most have a pretty straight forward way of getting access to the data.</description>
+    </item>
+    
+  </channel>
+</rss>
