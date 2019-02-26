@@ -4,7 +4,7 @@ external_link: ""
 image:
   #caption: Photo by Toa Heftiba on Unsplash
   focal_point: Smart
-summary: My summer undergraduate research internship at Colorado State University in the Department of Atmospheric Science. Sponsored by the National Science Foundation.
+summary: My summer undergraduate research internship at Colorado State University in the [Department of Atmospheric Science](https://www.atmos.colostate.edu). Sponsored by the National Science Foundation.
 tags:
 - Meteorology
 title: Case Study Analysis of Easterly Wave Formation in the East Pacific
