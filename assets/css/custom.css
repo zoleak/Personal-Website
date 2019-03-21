@@ -75,17 +75,48 @@ footer a#back_to_top i {
 
 #footer-columns{
   padding-top: 35px;
-  margin-right: 20px;
+  margin-right: 70px;
   margin-left: 20px;
   font-size: .75rem;
   font-family:Lato;
+  float:left;
+  width: 50%;
+  padding: 10px;
+  float: left;
+  display:inline-block;
+  box-sizing: border-box;
 }
 
 #footer-col-1{
-  padding-bottom: 25px;
+  float:left;
+  width: 50%;
+  padding: 10px;
+  float: left;
+  display:inline-block;
+  box-sizing: border-box;
 }
 
 #footer-columns img{
   max-width: 200px;
   opacity: .5;
 }
+
+.Footer_outer{
+width: 980px;
+border: 1px solid;
+}
+
+.Footer_inner_left{
+width: 49%;
+Float: left;
+display:inline;
+}
+
+.col-sm-4{
+width: 49%;
+Float: right;
+display:inline;
+}
+
+
+

@@ -213,7 +213,7 @@
     
     <url>
     
-      <loc>/tags/r/</loc>
+      <loc>/categories/r/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -222,7 +222,7 @@
     
     <url>
     
-      <loc>/categories/r/</loc>
+      <loc>/tags/r/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -239,7 +239,7 @@
     
     <url>
     
-      <loc>/tags/roadsalt/</loc>
+      <loc>/categories/roadsalt/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -248,7 +248,7 @@
     
     <url>
     
-      <loc>/categories/roadsalt/</loc>
+      <loc>/tags/roadsalt/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -275,7 +275,7 @@
     
     <url>
     
-      <loc>/tags/water-quality/</loc>
+      <loc>/categories/water-quality/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -284,7 +284,7 @@
     
     <url>
     
-      <loc>/categories/water-quality/</loc>
+      <loc>/tags/water-quality/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -301,7 +301,7 @@
     
     <url>
     
-      <loc>/tags/blogdown/</loc>
+      <loc>/categories/blogdown/</loc>
       <lastmod>2019-02-13T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -310,7 +310,7 @@
     
     <url>
     
-      <loc>/categories/blogdown/</loc>
+      <loc>/tags/blogdown/</loc>
       <lastmod>2019-02-13T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
