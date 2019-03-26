@@ -148,6 +148,7 @@ sharing = true
   publication_view = 2
   talk_view = 2
 
+
 # Search.
 [search]
   # Search provider:

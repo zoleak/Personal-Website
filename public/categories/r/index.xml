@@ -8,9 +8,7 @@
     <language>en-us</language>
     <copyright>&amp;copy;2019 Kevin Zolea</copyright>
     <lastBuildDate>Sat, 16 Feb 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
-    
+    <atom:link href="/categories/r/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Using the USGS dataRetrieval package to analyze continuous water quality data</title>
@@ -18,7 +16,151 @@
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/usgs/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</guid>
-      <description>Introduction Being that I work for the Division of Water Monitoring &amp;amp; Standards, I have to analyze a lot of water quality data. A majority of the data is in house from the samples we collect but most times I have to download data from online sources. These online sources usually consist of the same organizations and most have a pretty straight forward way of getting access to the data.</description>
+      <description>
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;Being that I work for the &lt;a href=&#34;https://www.nj.gov/dep/wms/&#34; target=&#34;_blank&#34;&gt;Division of Water Monitoring &amp;amp; Standards&lt;/a&gt;, I have to analyze a lot of water quality data. A majority of the data is in house from the samples we collect but most times I have to download data from online sources. These online sources usually consist of the same organizations and most have a pretty straight forward way of getting access to the data. However, the process of going to that organization’s website and getting whatever data you need is a bit time consuming. I always look for ways that I can automate a task and not have to do the same things over and over again. It wasn’t until recently that I learned about the &lt;a href=&#34;https://cran.r-project.org/web/packages/dataRetrieval/dataRetrieval.pdf&#34; target=&#34;_blank&#34;&gt;dataRetrieval&lt;/a&gt; package, which can do exactly that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-is-the-dataretrieval-package-how-does-it-work&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What is the &lt;code&gt;dataRetrieval&lt;/code&gt; package &amp;amp; how does it work?&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;dataRetrieval&lt;/code&gt; package is a collection of functions to help retrieve U.S. Geological Survey (&lt;a href=&#34;https://www.usgs.gov&#34; target=&#34;_blank&#34;&gt;USGS&lt;/a&gt;) and U.S. Environmental Protection Agency (&lt;a href=&#34;https://www.epa.gov&#34; target=&#34;_blank&#34;&gt;EPA&lt;/a&gt;) water quality and hydrology data from web services. With the dataRetrieval package you can discover, access, retrieve, and parse water data. The data comes from numerous different sources. The image below provides a nice overview of the different sources, data types, metadata, time series type, formats, and output.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/data_source_example.png&#34; alt=&#34;Image Credit: USGS&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Image Credit: USGS&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;I’m not going to go into all the different functions and usage of the &lt;code&gt;dataRetrieval&lt;/code&gt; package but if you would like to learn more here are some of the sources I found the most useful:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/dataRetrieval/vignettes/dataRetrieval.html#usgs-web-retrievals&#34; target=&#34;_blank&#34;&gt;Introduction to the dataRetrieval package&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://acwi.gov/monitoring/conference/2016/0_monday_may2/A1B1/dataRetrieval%20Tutorial_secure.pdf&#34; target=&#34;_blank&#34;&gt;dataRetrieval Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pubs.usgs.gov/tm/04/a10/pdf/tm4A10.pdf&#34; target=&#34;_blank&#34;&gt;USGS PDF&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-i-will-show-in-this-blog-post&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What I will show in this blog post&lt;/h3&gt;
+&lt;p&gt;In this blog post I will discuss the usage of the &lt;code&gt;readNWISuv()&lt;/code&gt; function and how to create a nice plot with the &lt;code&gt;ggplot2&lt;/code&gt; package. The &lt;code&gt;readNWISuv()&lt;/code&gt; function imports data from the &lt;a href=&#34;https://waterdata.usgs.gov/nwis&#34; target=&#34;_blank&#34;&gt;NWIS&lt;/a&gt; web service. Specifically, this function retrieves instantaneous water quality data. In order to use this function you must have the following arguments:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;readNWISuv(siteNumbers, parameterCd, startDate = &amp;quot;&amp;quot;, endDate = &amp;quot;&amp;quot;,tz = &amp;quot;UTC&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;siteNumbers&lt;/code&gt;: A character vector of USGS site numbers (or multiple sites). This is usually an 8 digit number. You can use this &lt;a href=&#34;https://maps.waterdata.usgs.gov/mapper/index.html&#34; target=&#34;_blank&#34;&gt;map&lt;/a&gt; to find a site your interested in.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;parameterCd&lt;/code&gt;: Character USGS parameter code.This is usually an 5 digit number. To find a parameter code of interest you can type in &lt;code&gt;parameterCdFile&lt;/code&gt;. This allows you to explore the USGS parameter codes.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;startDate&lt;/code&gt;: character starting date for data retrieval in the form YYYY-MM-DD.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;endDate&lt;/code&gt;: character ending date for data retrieval in the form YYYY-MM-DD.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tz&lt;/code&gt;: character to set timezone attribute of dateTime. Default is “UTC”, and converts the date times to UTC. There are numerous different possible values to use. For example, if you wanted it to be in Eastern Standard Time, you would use &lt;code&gt;&amp;quot;America/New_York&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;install-and-load-dataretrieval-package-from-cran&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Install and load &lt;code&gt;dataRetrieval&lt;/code&gt; package from cran&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;install.packages(&amp;quot;dataRetrieval&amp;quot;)      library(dataRetrieval)&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pull-data-with-the-readnwisuv-function&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Pull data with the &lt;code&gt;readNWISuv()&lt;/code&gt; function&lt;/h3&gt;
+&lt;p&gt;For my analysis I am going to pull continuous specific conductance (SC) data for a site of intereset in NJ. With this specific conductance data, I will calculate Total dissolved solids (TDS). I will do this by using an equation from a correlation I made between SC &amp;amp; TDS. Being that this isn’t the focus of the post, I will not go in detail about this. However, in a subsequent post I will explain how I did this.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;USGS_continuous_sc_data&amp;lt;-readNWISuv(&amp;quot;01408029&amp;quot;,&amp;quot;00095&amp;quot;,tz = &amp;quot;America/New_York&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;For simplicity, I am only looking up one site and one type of parameter. You can look up multiple sites and parameters in one pull. Now lets take a look at a preview of the pull we just made.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##   agency_cd  site_no            dateTime X_00095_00000 X_00095_00000_cd
+## 1      USGS 01408029 2007-10-01 01:00:00           246                A
+## 2      USGS 01408029 2007-10-01 01:15:00           246                A
+## 3      USGS 01408029 2007-10-01 01:30:00           246                A
+## 4      USGS 01408029 2007-10-01 01:45:00           246                A
+## 5      USGS 01408029 2007-10-01 02:00:00           246                A
+## 6      USGS 01408029 2007-10-01 02:15:00           246                A
+##              tz_cd
+## 1 America/New_York
+## 2 America/New_York
+## 3 America/New_York
+## 4 America/New_York
+## 5 America/New_York
+## 6 America/New_York&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The names of the columns in the dataframe can be described as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;agency_cd&lt;/code&gt;: The NWIS code for the agency reporting the data&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;site_no&lt;/code&gt;: The USGS site number&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;dateTime&lt;/code&gt;: The date and time of the value converted to UTC&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;X_00095_00000&lt;/code&gt;: The values of the parameter we gave to the function.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;X_00095_00000_cd&lt;/code&gt;: The statistic code&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tz_cd&lt;/code&gt;: The time zone code for dateTime&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can clean up the names with the &lt;code&gt;reenameNWISColumns()&lt;/code&gt; function if you’d like.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;we-have-the-data-now-what&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;We have the data… now what?&lt;/h3&gt;
+&lt;p&gt;Now that we have retrieved the data, we can now start manipulating it and create a plot. We will create the plot using the &lt;code&gt;ggplot2&lt;/code&gt; package. I mentioned before that I was going to calculate TDS. Just to give some background… the reason I am doing this is because of a project I am working on that deals with roadsalt. I figured I would include it in this post just to show that you have a great deal of options in R. I will discuss my roadsalt research in more detail in later posts!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-is-the-ggplot2-package&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What is the ggplot2 package?&lt;/h3&gt;
+&lt;p&gt;The &lt;a href=&#34;https://www.rdocumentation.org/packages/ggplot2/versions/3.1.0&#34; target=&#34;_blank&#34;&gt;ggplot2&lt;/a&gt; package is a system for ‘declaratively’ creating graphics, based on “The Grammar of Graphics”. It is a great way to visualize the data you are analyzing. With ggplot2, you have a lot of flexibility with the amount of customization you can give your plot. In my opinion, I think it is very easy to learn and it produces beautiful high quality plots. To learn more about ggplot2, I recommend &lt;a href=&#34;http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html&#34; target=&#34;_blank&#34;&gt;The Complete ggplot2 Tutorial&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;full-code-used-to-create-plot&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Full code used to create plot:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;library(dataRetrieval)
+library(ggplot2)
+library(dplyr)
+library(plyr)
+
+### Vector of sites with continuous specific conductance data ###
+siteNumber&amp;lt;-c(&amp;quot;01408029&amp;quot;)
+
+### Parameter code for specific conductance ###
+parameterCd&amp;lt;-&amp;quot;00095&amp;quot;
+
+### Function that retrieves near real time continuous data for specific sites and parameters ###
+USGS_continuous_sc_data&amp;lt;-readNWISuv(siteNumber,parameterCd,tz = &amp;quot;America/New_York&amp;quot;)
+
+### Filter dataframe ###
+USGS_continuous_sc_data&amp;lt;-USGS_continuous_sc_data%&amp;gt;%
+  dplyr::select(site_no,dateTime,X_00095_00000)%&amp;gt;%
+  dplyr::rename(Site = site_no,Specific_conductance = X_00095_00000)
+  
+### Calculate TDS based on continuous Specific Conductance data and eq from correlation plots ###
+final_USGS_data_TDS&amp;lt;-USGS_continuous_sc_data%&amp;gt;%
+  dplyr::mutate(Calculated_TDS = Specific_conductance * 0.572 +6.19)
+
+### theme for plots ###
+graph_theme_T&amp;lt;- theme_linedraw()+
+  theme(plot.title=element_text(size=15, face=&amp;quot;bold&amp;quot;,vjust=0.5,hjust = 0.5),
+        plot.subtitle = element_text(size=15, face=&amp;quot;bold&amp;quot;,vjust=0.5,hjust = 0.5),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        plot.background = element_blank(),
+        panel.background = element_blank(),
+        plot.margin = unit(c(1.5,2,4,2), &amp;quot;lines&amp;quot;), 
+        legend.position = &amp;quot;bottom&amp;quot;,
+        legend.background = element_blank(),
+        legend.text=element_text(size=10, face=&amp;quot;bold&amp;quot;))
+        
+### Make plot of data ###
+      
+p&amp;lt;-ggplot(final_USGS_data_TDS, aes(x=dateTime,y=Calculated_TDS)) +
+  geom_line(aes(color = &amp;quot;USGS Continuous Data&amp;quot;),
+    stat = &amp;quot;identity&amp;quot;,size=1.3)+
+  scale_y_continuous(expand = c(0, 0), limits = c(0, max(final_USGS_data_TDS$Calculated_TDS)))+
+  ggtitle(&amp;quot;Total Dissolved Solids (TDS) Concentration (mg/L)&amp;quot;) +
+  labs(subtitle =paste(&amp;quot;USGS Site:&amp;quot;,final_USGS_data_TDS$Site,sep = &amp;#39;&amp;#39;))+
+  xlab(&amp;quot;Year&amp;quot;) + ylab(&amp;quot;TDS Concentration (mg/L)&amp;quot;) +
+  geom_hline(aes(yintercept = 500,color=&amp;quot;Freshwater Aquatic Life Criteria for TDS = 500 mg/L&amp;quot;),size=1.3,alpha=0.6)+
+  scale_color_manual(&amp;quot;&amp;quot;,
+                     values = c(&amp;quot;USGS Continuous Data&amp;quot;=&amp;quot;#037907&amp;quot;,
+                                &amp;quot;Freshwater Aquatic Life Criteria for TDS = 500 mg/L&amp;quot;=&amp;quot;red&amp;quot;))+
+  
+  graph_theme_T 
+
+p
+  &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;final-product&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Final Product:&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/USGS/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-is-this-plot-showing&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What is this plot showing?&lt;/h3&gt;
+&lt;p&gt;This plot is showing the calculated TDS concentration for the selected site from 2007- present day. The red line indicates the Freshwater Aquatic Life Criteria for TDS. In the most simpliest terms, when the graph shows the TDS concentration (green line) going over the red line, TDS is over the standard.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;As you can see, the &lt;code&gt;dataRetrieval&lt;/code&gt; package is a very useful tool for water quality analysis. There is sooo much data you can obtain with just the ease of writing a few lines of code! I only touched base on &lt;strong&gt;1&lt;/strong&gt; function! There are so many different functions you can use to gain access to all different types of water quality data. Definitly look over the resources I included in the beginning if you want to learn more. I know this post was very basic but I hope it has helped you in some way. If you have any questions feel free to reach out to me!&lt;/p&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -27,7 +169,104 @@
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/blogdown/creating-a-website-with-the-academic-theme-in-blogdown/</guid>
-      <description>Introduction: I have been told by a countless number of people that creating a personal website is a great way to showcase your skills and tell your story. I have been contemplating this for some time but kept procrastinating. The two biggest excuses I kept telling myself was that it would be too difficult &amp;amp; it would cost money. Boy was I wrong! It wasn’t until I started using R this past year that I realized how wrong I was.</description>
+      <description>
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Introduction:&lt;/h3&gt;
+&lt;p&gt;I have been told by a countless number of people that creating a personal website is a great way to showcase your skills and tell your story. I have been contemplating this for some time but kept procrastinating. The two biggest excuses I kept telling myself was that it would be too difficult &amp;amp; it would cost money. Boy was I wrong! It wasn’t until I started using R this past year that I realized how wrong I was. After a quick google search I came across the &lt;a href=&#34;https://cran.r-project.org/web/packages/blogdown/blogdown.pdf&#34; target=&#34;_blank&#34;&gt;blogdown&lt;/a&gt; package. &lt;code&gt;Blogdown&lt;/code&gt; is an amazing package in which you can create blogs and websites with &lt;a href=&#34;https://rmarkdown.rstudio.com/&#34; target=&#34;_blank&#34;&gt;R Markdown&lt;/a&gt;. Now I’m not saying that this stuff is extremely easy but if someone like myself(absolutely no website development knowledge) can do it, &lt;strong&gt;YOU CAN TOO!&lt;/strong&gt; This blog post isn’t a sure fire way to do it but more of an overview of how I did it. I would also like to point out that this is a &lt;strong&gt;very basic introduction &lt;/strong&gt; to creating a blog/website with blogdown. The amount of things you can do with this package is almost endless.. especially if you have an understanding of CSS, HTML, and Javascript.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://media.giphy.com/media/Rl9Yqavfj2Ula/giphy.gif&#34; /&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;prerequisites&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Prerequisites:&lt;/h3&gt;
+&lt;p&gt;Before you jump right in I recommend reading some online material and watching some youtube videos. Here is a list of the resources that helped me a lot.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://bookdown.org/yihui/blogdown/&#34; target=&#34;_blank&#34;&gt;blogdown: Creating Websites with R Markdown&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://alison.rbind.io/post/up-and-running-with-blogdown/&#34; target=&#34;_blank&#34;&gt;Up and Running with Blogdown&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=syWAKaj-4ck&amp;amp;t=649s&#34; target=&#34;_blank&#34;&gt;Making a Website with Blogdown&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34;&gt;Academic Theme Documentation&lt;/a&gt; (if your going to use the academic theme)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://amber.rbind.io/blog/2016/12/19/creatingsite/&#34; target=&#34;_blank&#34;&gt;Making a Website Using Blogdown, Hugo, and GitHub pages&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once you review the above material you should have a pretty firm grasp on how to get the ball rolling. One of the biggest hurdles I had was creating my site with the Hugo Academic Theme. It wasn’t until I found this &lt;a href=&#34;https://stackoverflow.com/questions/54300535/unable-to-create-new-site-using-hugo-academic-theme&#34;&gt;post&lt;/a&gt; on stackoverflow that I was able to figure out what the problem was. There was a breaking change in the hugo-academic theme, so I had to download the development version of &lt;code&gt;blogdown&lt;/code&gt;. Not sure if this is still a thing but if you have the same problem definitly check out that post! The last piece of advice I will give before we get started is to make sure you check what the minimum hugo verision is for the theme you want to use. You can do this by going to the &lt;a href=&#34;https://themes.gohugo.io/&#34; target=&#34;_blank&#34;&gt;hugo website&lt;/a&gt;. Pick the theme you want to use and look at the line that says &lt;code&gt;Minimum Hugo Verision:&lt;/code&gt; You can check what verision of hugo you have by using &lt;code&gt;hugo_version()&lt;/code&gt; in R. Now lets get started!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;creating-a-repository-and-cloning-it&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Creating a Repository and Cloning it&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;I am going to assume you have used &lt;a href=&#34;https://github.com/&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt; before, but if you haven’t, that is completely fine. You can check out this &lt;a href=&#34;https://guides.github.com/&#34; target=&#34;_blank&#34;&gt;site&lt;/a&gt; to get a better understanding. Once you have a good understanding of GitHub and have an account created, you need to create a new repository. You can name this repository anything you want but it’s usually best practice to give it a meaningful name.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/screenshot1.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;Once you click create repository you should be on your repository page.&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Now you have to create a local copy of your repository or in other words “clone it”. To do this click the green “Clone or Download” button on the right hand side and copy the url displayed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/screenshot2.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;So in order to “clone” the repo with the url that you just copied, you’re going to have to use git. If you don’t know anything about git, I recommend reading &lt;a href=&#34;https://happygitwithr.com/&#34; target=&#34;_blank&#34;&gt;Happy Git and GitHub for the useR&lt;/a&gt;. Now you can do this in numerous different ways. You can open &lt;a href=&#34;https://macpaw.com/how-to/use-terminal-on-mac&#34;&gt;Terminal&lt;/a&gt; if you’re on a Mac, if you’re on windows you can open &lt;a href=&#34;https://gitforwindows.org/&#34; target=&#34;_blank&#34;&gt;Git Bash&lt;/a&gt; or you can use the Terminal in Rstudio. Personally, I like to use Rstudio. So if you’re in Rstudio you have to make sure that you navigate to your working directory. You can see your working directory by typing &lt;code&gt;pwd&lt;/code&gt; and to change directories use &lt;code&gt;cd&lt;/code&gt;. Type &lt;code&gt;git clone&lt;/code&gt; and then paste the URL that you copied before.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The command should look like this:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git clone https://github.com/zoleak/Personal_Website.git&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If all went well then you should see a folder with the files in your repo in the directory that you chose.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/folder_stuff.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;getting-started-with-the-blogdown-package-in-rstudio&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Getting started with the blogdown package in Rstudio&lt;/h3&gt;
+&lt;p&gt;The time has finally come to start creating the site.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Open Rstudio and install &lt;code&gt;blogdown&lt;/code&gt;. I recommend installing the development version, which can be done like this:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;remotes::install_github(&#39;rstudio/blogdown&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Since &lt;code&gt;blogdown&lt;/code&gt; is based on the static site generator Hugo, you need to install Hugo. You can easily do this by using a function in &lt;code&gt;blogdown&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;install_hugo()&lt;/code&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Use the top menu buttons in Rstudio to browse to the directory on your computer where your GitHub repo is.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;File-&amp;gt;New Project-&amp;gt;Existing Directory&lt;/code&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Pick the theme you want to use. There are numerous different themes to pick from. I used the academic theme so I will use this one for the example. To browse themes &lt;a href=&#34;https://themes.gohugo.io/&#34; target=&#34;_blank&#34;&gt;click here&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Create site using the &lt;code&gt;new_site()&lt;/code&gt; function&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There are a couple different options to create the site but I believe the best one is using the &lt;code&gt;new_site()&lt;/code&gt; function. You can do this like so:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;blogdown::new_site(theme = &amp;quot;gcushen/hugo-academic&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;An example site should now be previewed in the Viewer panel of Rstudio.&lt;/p&gt;
+&lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Personalize the website&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I am not going to go over this because I am still learning how to do this myself. The main thing you should know is that you can edit the example site in any way you would like. You can change the title, fonts, color scheme, widgets used, etc. If you decide to use the Academic Theme look over the &lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;documentation&lt;/a&gt; . The author of the theme goes into great detail on how to get started and the different levels of customization you can do. The last thing I am going to touch base on is how to get your new site deployed to Netlify.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;deploy-in-netlify&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Deploy in Netlify&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/img/netlify.png&#34; /&gt; There are a number of ways to deploy your new website but I personally like Netlify. Netlify allows you to connect to your GitHub repo, add custom build settings, and deploy your website. The best part about Netlify is that it’s &lt;strong&gt;free&lt;/strong&gt; and extremely &lt;strong&gt;easy&lt;/strong&gt;.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;When you are ready to deploy, commit your changes and push to GitHub, then go online to &lt;a href=&#34;https://www.netlify.com/&#34; target=&#34;_blank&#34;&gt;Netlify&lt;/a&gt;. You can commit your changes and push to GitHub all in Rstudio. Use the top menu button.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;Tools-&amp;gt;Version Control-&amp;gt;Commit&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This will bring up a new window:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/version_control.png&#34; /&gt; You should see all your files there. Highlight all the files you want to commit and make sure they are set to staged. Add a commit message and then press commit. After you press commit a smaller window will pop up. Wait a couple seconds and let it do it’s thing. Once it’s done hit close. Lastly, click the push button. If you did this correctly the files will now be uploaded to your GitHub repo.&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Go to Netlify’s website and click on the sign up button and sign up using your existing GitHub account.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Log in, and select: &lt;code&gt;New site from Git-&amp;gt; Continuous Deployment: GitHub&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Netlify will then allow you to select from your existing GitHub repositories. Pick the repo you’ve been with.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;final-thoughts&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Final Thoughts&lt;/h3&gt;
+&lt;p&gt;As you can see, it isn’t as difficult as you may have thought to create your own website/blog. &lt;code&gt;Blogdown&lt;/code&gt; is a great resource to utilize. Like I mentioned in the beginning, this is a very &lt;strong&gt;basic&lt;/strong&gt; introduction into &lt;code&gt;blogdown&lt;/code&gt;. There is so much more you can do to your website to make it awesome! I hope this post has helped you in some way in getting your website going. If you have an comments, constructive critism, questions, etc. please let me know and contact me.&lt;/p&gt;
+&lt;/div&gt;
+</description>
     </item>
     
   </channel>
