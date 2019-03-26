@@ -33,6 +33,11 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/zoleak
+  
+- icon: rss-square
+  icon_pack: fas
+  link: https://www.r-bloggers.com/
+  
 superuser: true
 user_groups:
 - Researchers
