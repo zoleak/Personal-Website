@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;2019 Kevin Zolea</copyright>
-    <lastBuildDate>Sat, 16 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 27 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tips For Customizing Your R Leaflet Map</title>
+      <link>/post/r-leaflet/tips-for-customizing-your-r-leaflet-map/</link>
+      <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r-leaflet/tips-for-customizing-your-r-leaflet-map/</guid>
+      <description>OverviewMaps are apart of our everyday lifes. They can be seen in almost every industry and are useful for numerous different purposes. A lot of the time these maps are static. Sometimes, however, it’s extremely useful to interact with the data on the map. This is where the Leafletpackage comes in. This post will go over what the Leaflet package is and provide some useful tips on how to make your new interactive map shine.</description>
+    </item>
     
     <item>
       <title>Using the USGS dataRetrieval package to analyze continuous water quality data</title>

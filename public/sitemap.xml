@@ -4,6 +4,14 @@
     
     <url>
     
+      <loc>/post/r-leaflet/tips-for-customizing-your-r-leaflet-map/</loc>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/post/usgs/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     </url>
@@ -152,7 +160,16 @@
     <url>
     
       <loc>/</loc>
-      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/leaflet/</loc>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -179,7 +196,7 @@
     <url>
     
       <loc>/post/</loc>
-      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -214,7 +231,7 @@
     <url>
     
       <loc>/tags/r/</loc>
-      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -223,7 +240,7 @@
     <url>
     
       <loc>/categories/r/</loc>
-      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -267,7 +284,7 @@
     <url>
     
       <loc>/tags/</loc>
-      <lastmod>2019-02-11T00:00:00-04:00</lastmod>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
