@@ -18,14 +18,31 @@
       <guid>/post/r-leaflet/tips-for-customizing-your-r-leaflet-map/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#overview&#34;&gt;Overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#what-is-leaflet&#34;&gt;What is &lt;code&gt;Leaflet&lt;/code&gt; ?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#prerequisites&#34;&gt;Prerequisites:&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;div id=&#34;overview&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Overview&lt;/h3&gt;
-&lt;p&gt;Maps are apart of our everyday lifes. They can be seen in almost every industry and are useful for numerous different purposes. A lot of the time these maps are static. Sometimes, however, it’s extremely useful to interact with the data on the map. This is where the &lt;a href=&#34;https://cran.r-project.org/web/packages/leaflet/leaflet.pdf&#34; target=&#34;_blank&#34;&gt;Leaflet&lt;/a&gt;package comes in. This post will go over what the &lt;code&gt;Leaflet&lt;/code&gt; package is and provide some useful tips on how to make your new interactive map shine.&lt;/p&gt;
+&lt;p&gt;Maps are apart of our everyday lifes. They can be seen in almost every industry and are useful for numerous different purposes. A lot of the time these maps are static. Sometimes, however, it’s extremely useful to interact with the data on the map. This is where the &lt;a href=&#34;https://cran.r-project.org/web/packages/leaflet/leaflet.pdf&#34; target=&#34;_blank&#34;&gt;Leaflet&lt;/a&gt; package comes in. This post will go over what the &lt;code&gt;Leaflet&lt;/code&gt; package is and provide some useful tips on how to make your new interactive map shine.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;what-is-leaflet&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;What is &lt;code&gt;Leaflet&lt;/code&gt;&lt;/h3&gt;
+&lt;h3&gt;What is &lt;code&gt;Leaflet&lt;/code&gt; ?&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;Leaflet&lt;/code&gt; is an open-source &lt;code&gt;JavaScript&lt;/code&gt; library for mobile-friendly interactive maps. It’s used by a great deal of websites and GIS specialists all over the world! The great thing about &lt;code&gt;Leaflet&lt;/code&gt; is that it’s super easy to learn and there’s so many tutorials out there to help you. Luckily, instead of having to learn &lt;code&gt;JavaScript&lt;/code&gt; theres’s an R &lt;code&gt;Leaflet&lt;/code&gt; package. This R package makes it extremely easy to integrate and control &lt;code&gt;Leaflet&lt;/code&gt; maps in R.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;prerequisites&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Prerequisites:&lt;/h3&gt;
+&lt;p&gt;Before we jump head first into some of tips, I believe it’s necessary for you to go over some material on the &lt;code&gt;Leaflet&lt;/code&gt; package in R. This post assumes you know the basics of &lt;code&gt;Leaflet&lt;/code&gt; but just in case someone got here and has no clue what I am talking about here are some resources I found helpful when I first started using the package.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://rstudio.github.io/leaflet/&#34; target=&#34;_blank&#34;&gt;Leaflet for R - Introduction&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.earthdatascience.org/courses/earth-analytics/get-data-using-apis/leaflet-r/&#34; target=&#34;_blank&#34;&gt;Creating Interactive Spatial Maps in R Using Leaflet&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.datascience.com/blog/beginners-guide-to-shiny-and-leaflet-for-interactive-mapping&#34; target=&#34;_blank&#34;&gt;A Beginner’s Exploration of Shiny and Leaflet for Interactive Mapping&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=vl9D3uTk36k&amp;amp;list=PLmFi_ou2WwcEyPq7Y9DvzFRLlp9-XvFDb&#34; target=&#34;_blank&#34;&gt;Leaflet Mapping in Rstudio - Introduction&lt;/a&gt; (Series of videos)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 </description>
     </item>

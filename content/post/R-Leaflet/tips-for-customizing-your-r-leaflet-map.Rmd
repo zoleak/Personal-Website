@@ -15,11 +15,35 @@ image:
   
 summary: Useful tips for adding some flavor to your to interactive leaflet map
 
+output:
+  blogdown::html_page:
+  toc: true
+
+
+
 draft: true
 ---
-### Overview ###
+### Overview 
 
-Maps are apart of our everyday lifes. They can be seen in almost every industry and are useful for numerous different purposes. A lot of the time these maps are static. Sometimes, however, it's extremely useful to interact with the data on the map. This is where the [Leaflet](https://cran.r-project.org/web/packages/leaflet/leaflet.pdf){target="_blank"}package comes in. This post will go over what the ```Leaflet``` package is and provide some useful tips on how to make your new interactive map shine. 
+Maps are apart of our everyday lifes. They can be seen in almost every industry and are useful for numerous different purposes. A lot of the time these maps are static. Sometimes, however, it's extremely useful to interact with the data on the map. This is where the [Leaflet](https://cran.r-project.org/web/packages/leaflet/leaflet.pdf){target="_blank"} package comes in. This post will go over what the ```Leaflet``` package is and provide some useful tips on how to make your new interactive map shine. 
 
-### What is ```Leaflet``` ###
+### What is ```Leaflet``` ?
 ```Leaflet``` is an open-source ```JavaScript``` library for mobile-friendly interactive maps. It's used by a great deal of websites and GIS specialists all over the world! The great thing about ```Leaflet``` is that it's super easy to learn and there's so many tutorials out there to help you. Luckily, instead of having to learn ```JavaScript``` theres's an R ```Leaflet``` package. This R package makes it extremely easy to integrate and control ```Leaflet``` maps in R.
+
+### Prerequisites:
+
+Before we jump head first into some of tips, I believe it's necessary for you to go over some material on the ```Leaflet``` package in R. This post assumes you know the basics of ```Leaflet``` but just in case someone got here and has no clue what I am talking about here are some resources I found helpful when I first started using the package.
+
+* [Leaflet for R - Introduction](https://rstudio.github.io/leaflet/){target="_blank"}
+
+* [Creating Interactive Spatial Maps in R Using Leaflet](https://www.earthdatascience.org/courses/earth-analytics/get-data-using-apis/leaflet-r/){target="_blank"}
+
+* [A Beginner’s Exploration of Shiny and Leaflet for Interactive Mapping](https://www.datascience.com/blog/beginners-guide-to-shiny-and-leaflet-for-interactive-mapping){target="_blank"}
+
+* [Leaflet Mapping in Rstudio - Introduction](https://www.youtube.com/watch?v=vl9D3uTk36k&list=PLmFi_ou2WwcEyPq7Y9DvzFRLlp9-XvFDb){target="_blank"} (Series of videos)
+
+
+
+
+
+
