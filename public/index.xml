@@ -17,14 +17,30 @@
       
       <guid>/post/r-leaflet/tips-for-customizing-your-r-leaflet-map/</guid>
       <description>
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/leaflet/leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet/leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/leafletfix/leafletfix.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/rstudio_leaflet/rstudio_leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-binding/leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/leaflet-easybutton/easy-button.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-easybutton/easy-button.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-easybutton/EasyButton-binding.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/ionicons/ionicons.min.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;/rmarkdown-libs/lfx-gps/lfx-gps-prod.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/lfx-gps/lfx-gps-prod.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/lfx-gps/lfx-gps-bindings.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/lfx-draw/lfx-draw-prod.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/lfx-draw/lfx-draw-prod.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/lfx-draw/lfx-draw-bindings.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/lfx-draw-drag/lfx-draw-drag-prod.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/lfx-styleeditor/lfx-styleeditor-prod.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/lfx-styleeditor/lfx-styleeditor-prod.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/lfx-styleeditor/lfx-styleeditor-bindings.js&#34;&gt;&lt;/script&gt;
 
-&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#overview&#34;&gt;Overview&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#what-is-leaflet&#34;&gt;What is &lt;code&gt;Leaflet&lt;/code&gt; ?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#prerequisites&#34;&gt;Prerequisites:&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
 
 &lt;div id=&#34;overview&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Overview&lt;/h3&gt;
@@ -43,6 +59,68 @@
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.datascience.com/blog/beginners-guide-to-shiny-and-leaflet-for-interactive-mapping&#34; target=&#34;_blank&#34;&gt;A Beginner’s Exploration of Shiny and Leaflet for Interactive Mapping&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=vl9D3uTk36k&amp;amp;list=PLmFi_ou2WwcEyPq7Y9DvzFRLlp9-XvFDb&#34; target=&#34;_blank&#34;&gt;Leaflet Mapping in Rstudio - Introduction&lt;/a&gt; (Series of videos)&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tip-1-use-the-leaflet.extras-package-to-add-extra-functionality-to-your-map&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Tip #1: Use the &lt;code&gt;leaflet.extras&lt;/code&gt; package to add extra functionality to your map&lt;/h3&gt;
+&lt;p&gt;The &lt;a href=&#34;https://github.com/bhaskarvk/leaflet.extras&#34;&gt;&lt;code&gt;leaflet.extras&lt;/code&gt;&lt;/a&gt; package is a great tool to add some cool features to your map using various &lt;a href=&#34;https://leafletjs.com/plugins&#34;&gt;Leaflet plugins&lt;/a&gt; (&lt;strong&gt;Note: Not all the plugins are integrated&lt;/strong&gt;). I wont go over all the various plugins,instead, I will show you the functions I use and find most useful.&lt;/p&gt;
+&lt;div id=&#34;reset-maps-view-to-original-view&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Reset map’s view to original view&lt;/h4&gt;
+&lt;p&gt;Resetting your map’s view to it’s original view is very simple. It can be done with one function: &lt;code&gt;addResetMapButton&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(leaflet)
+library(leaflet.extras)
+
+leaflet(options = leafletOptions(minZoom = 7))%&amp;gt;%
+  addTiles()%&amp;gt;%
+  addResetMapButton()&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;leaflet html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;options&#34;:{&#34;crs&#34;:{&#34;crsClass&#34;:&#34;L.CRS.EPSG3857&#34;,&#34;code&#34;:null,&#34;proj4def&#34;:null,&#34;projectedBounds&#34;:null,&#34;options&#34;:{}}},&#34;calls&#34;:[{&#34;method&#34;:&#34;addTiles&#34;,&#34;args&#34;:[&#34;//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&#34;,null,null,{&#34;minZoom&#34;:0,&#34;maxZoom&#34;:18,&#34;tileSize&#34;:256,&#34;subdomains&#34;:&#34;abc&#34;,&#34;errorTileUrl&#34;:&#34;&#34;,&#34;tms&#34;:false,&#34;noWrap&#34;:false,&#34;zoomOffset&#34;:0,&#34;zoomReverse&#34;:false,&#34;opacity&#34;:1,&#34;zIndex&#34;:1,&#34;detectRetina&#34;:false,&#34;attribution&#34;:&#34;&amp;copy; &lt;a href=\&#34;http://openstreetmap.org\&#34;&gt;OpenStreetMap&lt;\/a&gt; contributors, &lt;a href=\&#34;http://creativecommons.org/licenses/by-sa/2.0/\&#34;&gt;CC-BY-SA&lt;\/a&gt;&#34;}]},{&#34;method&#34;:&#34;addEasyButton&#34;,&#34;args&#34;:[{&#34;icon&#34;:&#34;ion-arrow-shrink&#34;,&#34;title&#34;:&#34;Reset View&#34;,&#34;onClick&#34;:&#34;function(btn, map){ map.setView(map._initialCenter, map._initialZoom); }&#34;,&#34;position&#34;:&#34;topleft&#34;}]}]},&#34;evals&#34;:[&#34;calls.1.args.0.onClick&#34;],&#34;jsHooks&#34;:{&#34;render&#34;:[{&#34;code&#34;:&#34;function(el, x, data) {\n  return (function(el, x){ var map = this; map._initialCenter = map.getCenter(); map._initialZoom = map.getZoom();}).call(this.getMap(), el, x, data);\n}&#34;,&#34;data&#34;:null}]}}&lt;/script&gt;
+&lt;/div&gt;
+&lt;div id=&#34;adding-gps-location-note-open-the-map-in-a-browser-not-inside-rstudio-allow-the-request-for-location-access&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Adding GPS location (&lt;strong&gt;Note: Open the map in a browser not inside Rstudio! Allow the request for location access&lt;/strong&gt;)&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;library(leaflet)
+library(leaflet.extras)
+
+map &amp;lt;- leaflet() %&amp;gt;% addTiles()
+
+map &amp;lt;- addControlGPS(map, options = gpsOptions(position = &amp;quot;topleft&amp;quot;, activate = TRUE, 
+                                               autoCenter = TRUE, maxZoom = 10, 
+                                               setView = TRUE))
+activateGPS(map)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;leaflet html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;options&#34;:{&#34;crs&#34;:{&#34;crsClass&#34;:&#34;L.CRS.EPSG3857&#34;,&#34;code&#34;:null,&#34;proj4def&#34;:null,&#34;projectedBounds&#34;:null,&#34;options&#34;:{}}},&#34;calls&#34;:[{&#34;method&#34;:&#34;addTiles&#34;,&#34;args&#34;:[&#34;//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&#34;,null,null,{&#34;minZoom&#34;:0,&#34;maxZoom&#34;:18,&#34;tileSize&#34;:256,&#34;subdomains&#34;:&#34;abc&#34;,&#34;errorTileUrl&#34;:&#34;&#34;,&#34;tms&#34;:false,&#34;noWrap&#34;:false,&#34;zoomOffset&#34;:0,&#34;zoomReverse&#34;:false,&#34;opacity&#34;:1,&#34;zIndex&#34;:1,&#34;detectRetina&#34;:false,&#34;attribution&#34;:&#34;&amp;copy; &lt;a href=\&#34;http://openstreetmap.org\&#34;&gt;OpenStreetMap&lt;\/a&gt; contributors, &lt;a href=\&#34;http://creativecommons.org/licenses/by-sa/2.0/\&#34;&gt;CC-BY-SA&lt;\/a&gt;&#34;}]},{&#34;method&#34;:&#34;addControlGPS&#34;,&#34;args&#34;:[{&#34;position&#34;:&#34;topleft&#34;,&#34;activate&#34;:true,&#34;autoCenter&#34;:true,&#34;maxZoom&#34;:10,&#34;setView&#34;:true}]},{&#34;method&#34;:&#34;activateGPS&#34;,&#34;args&#34;:[]}]},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;/div&gt;
+&lt;div id=&#34;draw-features-on-leaflet-map-and-have-ability-to-style&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Draw features on Leaflet map and have ability to style&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;library(leaflet)
+library(leaflet.extras)
+
+leaflet() %&amp;gt;%
+  setView(lng = -74.4 ,lat =40, zoom = 8)%&amp;gt;%
+  addTiles() %&amp;gt;%
+  addDrawToolbar(
+    targetGroup=&amp;#39;draw&amp;#39;,
+    editOptions = editToolbarOptions(selectedPathOptions = selectedPathOptions()))  %&amp;gt;%
+  addLayersControl(overlayGroups = c(&amp;#39;draw&amp;#39;), options =
+                     layersControlOptions(collapsed=FALSE)) %&amp;gt;%
+  addStyleEditor()&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-3&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;leaflet html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-3&#34;&gt;{&#34;x&#34;:{&#34;options&#34;:{&#34;crs&#34;:{&#34;crsClass&#34;:&#34;L.CRS.EPSG3857&#34;,&#34;code&#34;:null,&#34;proj4def&#34;:null,&#34;projectedBounds&#34;:null,&#34;options&#34;:{}}},&#34;setView&#34;:[[40,-74.4],8,[]],&#34;calls&#34;:[{&#34;method&#34;:&#34;addTiles&#34;,&#34;args&#34;:[&#34;//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&#34;,null,null,{&#34;minZoom&#34;:0,&#34;maxZoom&#34;:18,&#34;tileSize&#34;:256,&#34;subdomains&#34;:&#34;abc&#34;,&#34;errorTileUrl&#34;:&#34;&#34;,&#34;tms&#34;:false,&#34;noWrap&#34;:false,&#34;zoomOffset&#34;:0,&#34;zoomReverse&#34;:false,&#34;opacity&#34;:1,&#34;zIndex&#34;:1,&#34;detectRetina&#34;:false,&#34;attribution&#34;:&#34;&amp;copy; &lt;a href=\&#34;http://openstreetmap.org\&#34;&gt;OpenStreetMap&lt;\/a&gt; contributors, &lt;a href=\&#34;http://creativecommons.org/licenses/by-sa/2.0/\&#34;&gt;CC-BY-SA&lt;\/a&gt;&#34;}]},{&#34;method&#34;:&#34;addDrawToolbar&#34;,&#34;args&#34;:[null,&#34;draw&#34;,{&#34;position&#34;:&#34;topleft&#34;,&#34;draw&#34;:{&#34;polyline&#34;:{&#34;allowIntersection&#34;:true,&#34;drawError&#34;:{&#34;color&#34;:&#34;#b00b00&#34;,&#34;timeout&#34;:2500},&#34;guidelineDistance&#34;:20,&#34;maxGuideLineLength&#34;:4000,&#34;showLength&#34;:true,&#34;metric&#34;:true,&#34;feet&#34;:true,&#34;nautic&#34;:false,&#34;zIndexOffset&#34;:2000,&#34;shapeOptions&#34;:{&#34;stroke&#34;:true,&#34;color&#34;:&#34;#03f&#34;,&#34;weight&#34;:1,&#34;opacity&#34;:1,&#34;fill&#34;:false,&#34;fillColor&#34;:&#34;#03f&#34;,&#34;fillOpacity&#34;:0.4,&#34;clickable&#34;:true,&#34;smoothFactor&#34;:1,&#34;noClip&#34;:true},&#34;repeatMode&#34;:false},&#34;polygon&#34;:{&#34;showArea&#34;:false,&#34;metric&#34;:true,&#34;shapeOptions&#34;:{&#34;stroke&#34;:true,&#34;color&#34;:&#34;#03f&#34;,&#34;weight&#34;:1,&#34;opacity&#34;:1,&#34;fill&#34;:true,&#34;fillColor&#34;:&#34;#03f&#34;,&#34;fillOpacity&#34;:0.4,&#34;clickable&#34;:true,&#34;smoothFactor&#34;:1,&#34;noClip&#34;:true},&#34;repeatMode&#34;:false},&#34;circle&#34;:{&#34;shapeOptions&#34;:{&#34;stroke&#34;:true,&#34;color&#34;:&#34;#03f&#34;,&#34;weight&#34;:1,&#34;opacity&#34;:1,&#34;fill&#34;:true,&#34;fillColor&#34;:&#34;#03f&#34;,&#34;fillOpacity&#34;:0.4,&#34;clickable&#34;:true,&#34;smoothFactor&#34;:1,&#34;noClip&#34;:true},&#34;repeatMode&#34;:false,&#34;showRadius&#34;:true,&#34;metric&#34;:true,&#34;feet&#34;:true,&#34;nautic&#34;:false},&#34;rectangle&#34;:{&#34;showArea&#34;:true,&#34;metric&#34;:true,&#34;shapeOptions&#34;:{&#34;stroke&#34;:true,&#34;color&#34;:&#34;#03f&#34;,&#34;weight&#34;:1,&#34;opacity&#34;:1,&#34;fill&#34;:true,&#34;fillColor&#34;:&#34;#03f&#34;,&#34;fillOpacity&#34;:0.4,&#34;clickable&#34;:true,&#34;smoothFactor&#34;:1,&#34;noClip&#34;:true},&#34;repeatMode&#34;:false},&#34;marker&#34;:{&#34;zIndexOffset&#34;:2000,&#34;repeatMode&#34;:false},&#34;circlemarker&#34;:{&#34;stroke&#34;:true,&#34;color&#34;:&#34;#3388ff&#34;,&#34;weight&#34;:4,&#34;opacity&#34;:0.5,&#34;fill&#34;:true,&#34;fillOpacity&#34;:0.2,&#34;clickable&#34;:true,&#34;zIndexOffset&#34;:2000,&#34;repeatMode&#34;:false},&#34;singleFeature&#34;:false},&#34;edit&#34;:{&#34;edit&#34;:true,&#34;remove&#34;:true,&#34;selectedPathOptions&#34;:{&#34;dashArray&#34;:&#34;10, 10&#34;,&#34;weight&#34;:2,&#34;color&#34;:&#34;black&#34;,&#34;fill&#34;:true,&#34;fillColor&#34;:&#34;black&#34;,&#34;fillOpacity&#34;:0.6,&#34;maintainColor&#34;:false},&#34;allowIntersection&#34;:true}}]},{&#34;method&#34;:&#34;addLayersControl&#34;,&#34;args&#34;:[[],&#34;draw&#34;,{&#34;collapsed&#34;:false,&#34;autoZIndex&#34;:true,&#34;position&#34;:&#34;topright&#34;}]},{&#34;method&#34;:&#34;addStyleEditor&#34;,&#34;args&#34;:[{&#34;position&#34;:&#34;topleft&#34;,&#34;openOnLeafletDraw&#34;:true,&#34;useGrouping&#34;:false}]}]},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;A very interesting post on using the &lt;code&gt;addDrawToolbar()&lt;/code&gt; function to select multiple locations on your leaflet map in shiny can be seen here &lt;a href=&#34;https://redoakstrategic.com/geoshaper/&#34; target=&#34;_blank&#34;&gt;Selecting Multiple Locations on a Leaflet Map in R Shiny&lt;/a&gt;. Check it out!&lt;/p&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tip-2-have-map-zoom-into-polygon-once-polygon-is-clicked-in-shiny&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Tip #2: Have map zoom into polygon once polygon is clicked in shiny&lt;/h3&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;embed src=&#34;/img/leaflet_zoom.mp4&#34; /&gt;
+
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>

@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="Useful tips for adding some flavor to your to interactive leaflet map">
+  <meta name="description" content="Useful tips for adding some flavor to your interactive leaflet map">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/r-leaflet/tips-for-customizing-your-r-leaflet-map/">
@@ -72,10 +72,7 @@
     
       
       
-        
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
-        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css" crossorigin="anonymous">
       
     
 
@@ -137,14 +134,13 @@
   
   
     
-    
   
-  <meta property="twitter:card" content="summary">
+  <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Kevin Zolea">
   <meta property="og:url" content="/post/r-leaflet/tips-for-customizing-your-r-leaflet-map/">
   <meta property="og:title" content="Tips For Customizing Your R Leaflet Map | Kevin Zolea">
-  <meta property="og:description" content="Useful tips for adding some flavor to your to interactive leaflet map"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:description" content="Useful tips for adding some flavor to your interactive leaflet map"><meta property="og:image" content="/img/headers/leaflet.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-03-27T00:00:00&#43;00:00">
@@ -358,6 +354,15 @@
 
 
 
+<div class="article-header">
+  
+  
+  <img src="/img/headers/leaflet.png" class="article-banner" itemprop="image" alt="">
+  
+
+  
+</div>
+
 
 
 
@@ -399,7 +404,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -493,14 +498,30 @@
 
     <div class="article-style" itemprop="articleBody">
       
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet/leaflet.js"></script>
+<link href="/rmarkdown-libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js"></script>
+<script src="/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="/rmarkdown-libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet-binding/leaflet.js"></script>
+<link href="/rmarkdown-libs/leaflet-easybutton/easy-button.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet-easybutton/easy-button.js"></script>
+<script src="/rmarkdown-libs/leaflet-easybutton/EasyButton-binding.js"></script>
+<link href="/rmarkdown-libs/ionicons/ionicons.min.css" rel="stylesheet" />
+<link href="/rmarkdown-libs/lfx-gps/lfx-gps-prod.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/lfx-gps/lfx-gps-prod.js"></script>
+<script src="/rmarkdown-libs/lfx-gps/lfx-gps-bindings.js"></script>
+<link href="/rmarkdown-libs/lfx-draw/lfx-draw-prod.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/lfx-draw/lfx-draw-prod.js"></script>
+<script src="/rmarkdown-libs/lfx-draw/lfx-draw-bindings.js"></script>
+<script src="/rmarkdown-libs/lfx-draw-drag/lfx-draw-drag-prod.js"></script>
+<link href="/rmarkdown-libs/lfx-styleeditor/lfx-styleeditor-prod.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/lfx-styleeditor/lfx-styleeditor-prod.js"></script>
+<script src="/rmarkdown-libs/lfx-styleeditor/lfx-styleeditor-bindings.js"></script>
 
-<div id="TOC">
-<ul>
-<li><a href="#overview">Overview</a></li>
-<li><a href="#what-is-leaflet">What is <code>Leaflet</code> ?</a></li>
-<li><a href="#prerequisites">Prerequisites:</a></li>
-</ul>
-</div>
 
 <div id="overview" class="section level3">
 <h3>Overview</h3>
@@ -519,6 +540,68 @@
 <li><p><a href="https://www.datascience.com/blog/beginners-guide-to-shiny-and-leaflet-for-interactive-mapping" target="_blank">A Beginner’s Exploration of Shiny and Leaflet for Interactive Mapping</a></p></li>
 <li><p><a href="https://www.youtube.com/watch?v=vl9D3uTk36k&amp;list=PLmFi_ou2WwcEyPq7Y9DvzFRLlp9-XvFDb" target="_blank">Leaflet Mapping in Rstudio - Introduction</a> (Series of videos)</p></li>
 </ul>
+</div>
+<div id="tip-1-use-the-leaflet.extras-package-to-add-extra-functionality-to-your-map" class="section level3">
+<h3>Tip #1: Use the <code>leaflet.extras</code> package to add extra functionality to your map</h3>
+<p>The <a href="https://github.com/bhaskarvk/leaflet.extras"><code>leaflet.extras</code></a> package is a great tool to add some cool features to your map using various <a href="https://leafletjs.com/plugins">Leaflet plugins</a> (<strong>Note: Not all the plugins are integrated</strong>). I wont go over all the various plugins,instead, I will show you the functions I use and find most useful.</p>
+<div id="reset-maps-view-to-original-view" class="section level4">
+<h4>Reset map’s view to original view</h4>
+<p>Resetting your map’s view to it’s original view is very simple. It can be done with one function: <code>addResetMapButton</code></p>
+<pre><code>library(leaflet)
+library(leaflet.extras)
+
+leaflet(options = leafletOptions(minZoom = 7))%&gt;%
+  addTiles()%&gt;%
+  addResetMapButton()</code></pre>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addEasyButton","args":[{"icon":"ion-arrow-shrink","title":"Reset View","onClick":"function(btn, map){ map.setView(map._initialCenter, map._initialZoom); }","position":"topleft"}]}]},"evals":["calls.1.args.0.onClick"],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (function(el, x){ var map = this; map._initialCenter = map.getCenter(); map._initialZoom = map.getZoom();}).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+</div>
+<div id="adding-gps-location-note-open-the-map-in-a-browser-not-inside-rstudio-allow-the-request-for-location-access" class="section level4">
+<h4>Adding GPS location (<strong>Note: Open the map in a browser not inside Rstudio! Allow the request for location access</strong>)</h4>
+<pre><code>library(leaflet)
+library(leaflet.extras)
+
+map &lt;- leaflet() %&gt;% addTiles()
+
+map &lt;- addControlGPS(map, options = gpsOptions(position = &quot;topleft&quot;, activate = TRUE, 
+                                               autoCenter = TRUE, maxZoom = 10, 
+                                               setView = TRUE))
+activateGPS(map)
+</code></pre>
+<div id="htmlwidget-2" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addControlGPS","args":[{"position":"topleft","activate":true,"autoCenter":true,"maxZoom":10,"setView":true}]},{"method":"activateGPS","args":[]}]},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="draw-features-on-leaflet-map-and-have-ability-to-style" class="section level4">
+<h4>Draw features on Leaflet map and have ability to style</h4>
+<pre><code>library(leaflet)
+library(leaflet.extras)
+
+leaflet() %&gt;%
+  setView(lng = -74.4 ,lat =40, zoom = 8)%&gt;%
+  addTiles() %&gt;%
+  addDrawToolbar(
+    targetGroup=&#39;draw&#39;,
+    editOptions = editToolbarOptions(selectedPathOptions = selectedPathOptions()))  %&gt;%
+  addLayersControl(overlayGroups = c(&#39;draw&#39;), options =
+                     layersControlOptions(collapsed=FALSE)) %&gt;%
+  addStyleEditor()</code></pre>
+<div id="htmlwidget-3" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40,-74.4],8,[]],"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addDrawToolbar","args":[null,"draw",{"position":"topleft","draw":{"polyline":{"allowIntersection":true,"drawError":{"color":"#b00b00","timeout":2500},"guidelineDistance":20,"maxGuideLineLength":4000,"showLength":true,"metric":true,"feet":true,"nautic":false,"zIndexOffset":2000,"shapeOptions":{"stroke":true,"color":"#03f","weight":1,"opacity":1,"fill":false,"fillColor":"#03f","fillOpacity":0.4,"clickable":true,"smoothFactor":1,"noClip":true},"repeatMode":false},"polygon":{"showArea":false,"metric":true,"shapeOptions":{"stroke":true,"color":"#03f","weight":1,"opacity":1,"fill":true,"fillColor":"#03f","fillOpacity":0.4,"clickable":true,"smoothFactor":1,"noClip":true},"repeatMode":false},"circle":{"shapeOptions":{"stroke":true,"color":"#03f","weight":1,"opacity":1,"fill":true,"fillColor":"#03f","fillOpacity":0.4,"clickable":true,"smoothFactor":1,"noClip":true},"repeatMode":false,"showRadius":true,"metric":true,"feet":true,"nautic":false},"rectangle":{"showArea":true,"metric":true,"shapeOptions":{"stroke":true,"color":"#03f","weight":1,"opacity":1,"fill":true,"fillColor":"#03f","fillOpacity":0.4,"clickable":true,"smoothFactor":1,"noClip":true},"repeatMode":false},"marker":{"zIndexOffset":2000,"repeatMode":false},"circlemarker":{"stroke":true,"color":"#3388ff","weight":4,"opacity":0.5,"fill":true,"fillOpacity":0.2,"clickable":true,"zIndexOffset":2000,"repeatMode":false},"singleFeature":false},"edit":{"edit":true,"remove":true,"selectedPathOptions":{"dashArray":"10, 10","weight":2,"color":"black","fill":true,"fillColor":"black","fillOpacity":0.6,"maintainColor":false},"allowIntersection":true}}]},{"method":"addLayersControl","args":[[],"draw",{"collapsed":false,"autoZIndex":true,"position":"topright"}]},{"method":"addStyleEditor","args":[{"position":"topleft","openOnLeafletDraw":true,"useGrouping":false}]}]},"evals":[],"jsHooks":[]}</script>
+<div class="alert alert-note">
+  <div>
+    <p>A very interesting post on using the <code>addDrawToolbar()</code> function to select multiple locations on your leaflet map in shiny can be seen here <a href="https://redoakstrategic.com/geoshaper/" target="_blank">Selecting Multiple Locations on a Leaflet Map in R Shiny</a>. Check it out!</p>
+
+  </div>
+</div>
+
+</div>
+</div>
+<div id="tip-2-have-map-zoom-into-polygon-once-polygon-is-clicked-in-shiny" class="section level3">
+<h3>Tip #2: Have map zoom into polygon once polygon is clicked in shiny</h3>
+<div class="figure">
+<embed src="/img/leaflet_zoom.mp4" />
+
+</div>
 </div>
 
     </div>

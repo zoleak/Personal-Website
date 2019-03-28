@@ -18,7 +18,7 @@
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/r-leaflet/tips-for-customizing-your-r-leaflet-map/</guid>
-      <description>OverviewWhat is Leaflet ?Prerequisites:OverviewMaps are apart of our everyday lifes. They can be seen in almost every industry and are useful for numerous different purposes. A lot of the time these maps are static. Sometimes, however, it’s extremely useful to interact with the data on the map. This is where the Leaflet package comes in. This post will go over what the Leaflet package is and provide some useful tips on how to make your new interactive map shine.</description>
+      <description>OverviewMaps are apart of our everyday lifes. They can be seen in almost every industry and are useful for numerous different purposes. A lot of the time these maps are static. Sometimes, however, it’s extremely useful to interact with the data on the map. This is where the Leaflet package comes in. This post will go over what the Leaflet package is and provide some useful tips on how to make your new interactive map shine.</description>
     </item>
     
     <item>

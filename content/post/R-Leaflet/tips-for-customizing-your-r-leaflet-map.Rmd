@@ -2,6 +2,10 @@
 title: Tips For Customizing Your R Leaflet Map
 author: Kevin Zolea
 date: '2019-03-27'
+header:
+  image: 'headers/leaflet.png'
+  caption: ''
+  focal_point: ''
 slug: tips-for-customizing-your-r-leaflet-map
 categories:
 - R
@@ -13,11 +17,7 @@ image:
   caption: ''
   focal_point: ''
   
-summary: Useful tips for adding some flavor to your to interactive leaflet map
-
-output:
-  blogdown::html_page:
-  toc: true
+summary: Useful tips for adding some flavor to your interactive leaflet map
 
 
 
@@ -41,6 +41,108 @@ Before we jump head first into some of tips, I believe it's necessary for you to
 * [A Beginner’s Exploration of Shiny and Leaflet for Interactive Mapping](https://www.datascience.com/blog/beginners-guide-to-shiny-and-leaflet-for-interactive-mapping){target="_blank"}
 
 * [Leaflet Mapping in Rstudio - Introduction](https://www.youtube.com/watch?v=vl9D3uTk36k&list=PLmFi_ou2WwcEyPq7Y9DvzFRLlp9-XvFDb){target="_blank"} (Series of videos)
+
+### Tip #1: Use the ```leaflet.extras``` package to add extra functionality to your map
+
+The [```leaflet.extras```](https://github.com/bhaskarvk/leaflet.extras) package is a great tool to add some cool features to your map using various [Leaflet plugins](https://leafletjs.com/plugins) (**Note: Not all the plugins are integrated**). I wont go over all the various plugins,instead, I will show you the functions I use and find most useful.
+
+#### Reset map's view to original view
+
+Resetting your map's view to it's original view is very simple. It can be done with one function: ```addResetMapButton```
+
+```
+library(leaflet)
+library(leaflet.extras)
+
+leaflet(options = leafletOptions(minZoom = 7))%>%
+  addTiles()%>%
+  addResetMapButton()
+```
+
+```{r echo = FALSE, message=FALSE}
+
+### Load in necessary packages ###
+library(leaflet)
+library(leaflet.extras)
+
+### Create leaflet map ###
+leaflet()%>%
+  addTiles()%>%
+  addResetMapButton()
+
+```
+
+
+#### Adding GPS location (**Note: Open the map in a browser not inside Rstudio! Allow the request for location access**)
+```
+library(leaflet)
+library(leaflet.extras)
+
+map <- leaflet() %>% addTiles()
+
+map <- addControlGPS(map, options = gpsOptions(position = "topleft", activate = TRUE, 
+                                               autoCenter = TRUE, maxZoom = 10, 
+                                               setView = TRUE))
+activateGPS(map)
+
+```
+
+```{r echo = FALSE, message=FALSE}
+library(leaflet)
+library(leaflet.extras)
+
+map <- leaflet() %>% addTiles()
+
+map <- addControlGPS(map, options = gpsOptions(position = "topleft", activate = TRUE, 
+                                               autoCenter = TRUE, maxZoom = 10, 
+                                               setView = TRUE))
+activateGPS(map)
+
+```
+
+#### Draw features on Leaflet map and have ability to style
+```
+library(leaflet)
+library(leaflet.extras)
+
+leaflet() %>%
+  setView(lng = -74.4 ,lat =40, zoom = 8)%>%
+  addTiles() %>%
+  addDrawToolbar(
+    targetGroup='draw',
+    editOptions = editToolbarOptions(selectedPathOptions = selectedPathOptions()))  %>%
+  addLayersControl(overlayGroups = c('draw'), options =
+                     layersControlOptions(collapsed=FALSE)) %>%
+  addStyleEditor()
+```
+```{r echo = FALSE, message=FALSE}
+
+library(leaflet)
+library(leaflet.extras)
+
+leaflet() %>%
+  setView(lng = -74.4 ,lat =40, zoom = 8)%>%
+  addTiles() %>%
+  addDrawToolbar(
+    targetGroup='draw',
+    editOptions = editToolbarOptions(selectedPathOptions = selectedPathOptions()))  %>%
+  addLayersControl(overlayGroups = c('draw'), options =
+                     layersControlOptions(collapsed=FALSE)) %>%
+  addStyleEditor()
+
+
+```
+
+
+{{% alert note %}}
+A very interesting post on using the ```addDrawToolbar() ``` function to select multiple locations on your leaflet map in shiny can be seen here [Selecting Multiple Locations on a Leaflet Map in R Shiny](https://redoakstrategic.com/geoshaper/){target="_blank"}. Check it out!
+{{% /alert %}}
+
+### Tip #2: Have map zoom into polygon once polygon is clicked in shiny
+
+![](/img/leaflet_zoom.mp4)
+
+
 
 
 
