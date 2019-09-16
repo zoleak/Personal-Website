@@ -1,5 +1,60 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+    
+    <url>
+    
+      <loc>/categories/</loc>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/</loc>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/leaflet/</loc>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/</loc>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/categories/r/</loc>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/r/</loc>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/</loc>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+    </url>
+    
   
     
     <url>
@@ -12,7 +67,7 @@
     
     <url>
     
-      <loc>/post/usgs/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</loc>
+      <loc>/categories/roadsalt/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     </url>
     
@@ -20,7 +75,63 @@
     
     <url>
     
-      <loc>/post/blogdown/creating-a-website-with-the-academic-theme-in-blogdown/</loc>
+      <loc>/tags/roadsalt/</loc>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</loc>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/categories/water-quality/</loc>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/water-quality/</loc>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/blogdown/</loc>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/categories/blogdown/</loc>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/creating-a-website-with-the-academic-theme-in-blogdown/</loc>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/categories/hugo/</loc>
       <lastmod>2019-02-13T00:00:00+00:00</lastmod>
     </url>
     
@@ -37,6 +148,30 @@
     <url>
     
       <loc>/project/colorado_state_project/</loc>
+      <lastmod>2019-02-11T00:00:00-04:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/meteorology/</loc>
+      <lastmod>2019-02-11T00:00:00-04:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/</loc>
+      <lastmod>2019-02-11T00:00:00-04:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/shiny/</loc>
       <lastmod>2019-02-11T00:00:00-04:00</lastmod>
     </url>
     
@@ -76,32 +211,8 @@
     
     <url>
     
-      <loc>/publication/person-re-id/</loc>
-      <lastmod>2015-09-01T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/publication/clothing-search/</loc>
-      <lastmod>2013-07-01T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/author/admin/</loc>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/publication_types/1/</loc>
-      <lastmod>2013-07-01T00:00:00-04:00</lastmod>
-      <priority>0</priority>
+      <loc>/talk/</loc>
+      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
     </url>
     
   
@@ -110,15 +221,14 @@
     
       <loc>/publication_types/2/</loc>
       <lastmod>2015-09-01T00:00:00-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
     
     <url>
     
-      <loc>/author/</loc>
-      <priority>0</priority>
+      <loc>/publication/person-re-id/</loc>
+      <lastmod>2015-09-01T00:00:00-04:00</lastmod>
     </url>
     
   
@@ -126,15 +236,7 @@
     <url>
     
       <loc>/authors/</loc>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/categories/</loc>
-      <priority>0</priority>
+      <lastmod>2015-09-01T00:00:00-04:00</lastmod>
     </url>
     
   
@@ -143,70 +245,6 @@
     
       <loc>/authors/ga-cushen/</loc>
       <lastmod>2015-09-01T00:00:00-04:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/categories/hugo/</loc>
-      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/</loc>
-      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tags/leaflet/</loc>
-      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/authors/ms-nixon/</loc>
-      <lastmod>2013-07-01T00:00:00-04:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tags/meteorology/</loc>
-      <lastmod>2019-02-11T00:00:00-04:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/post/</loc>
-      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/project/</loc>
-      <lastmod>2019-02-11T00:00:00-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -214,8 +252,7 @@
     <url>
     
       <loc>/publication_types/</loc>
-      <lastmod>2013-07-01T00:00:00-04:00</lastmod>
-      <priority>0</priority>
+      <lastmod>2015-09-01T00:00:00-04:00</lastmod>
     </url>
     
   
@@ -230,106 +267,38 @@
     
     <url>
     
-      <loc>/tags/r/</loc>
-      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
+      <loc>/publication_types/1/</loc>
+      <lastmod>2013-07-01T00:00:00-04:00</lastmod>
     </url>
     
   
     
     <url>
     
-      <loc>/categories/r/</loc>
-      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
+      <loc>/publication/clothing-search/</loc>
+      <lastmod>2013-07-01T00:00:00-04:00</lastmod>
     </url>
     
   
     
     <url>
     
-      <loc>/talk/</loc>
-      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
+      <loc>/authors/ms-nixon/</loc>
+      <lastmod>2013-07-01T00:00:00-04:00</lastmod>
     </url>
     
   
     
     <url>
     
-      <loc>/tags/roadsalt/</loc>
-      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-      <priority>0</priority>
+      <loc>/author/admin/</loc>
     </url>
     
   
     
     <url>
     
-      <loc>/categories/roadsalt/</loc>
-      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tags/shiny/</loc>
-      <lastmod>2019-02-11T00:00:00-04:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tags/</loc>
-      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tags/water-quality/</loc>
-      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/categories/water-quality/</loc>
-      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/authors/admin/</loc>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tags/blogdown/</loc>
-      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/categories/blogdown/</loc>
-      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
-      <priority>0</priority>
+      <loc>/author/</loc>
     </url>
     
   

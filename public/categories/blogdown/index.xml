@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>blogdown on Kevin Zolea</title>
@@ -12,10 +11,10 @@
     
     <item>
       <title>Creating a website with the academic theme in blogdown</title>
-      <link>/post/blogdown/creating-a-website-with-the-academic-theme-in-blogdown/</link>
+      <link>/post/creating-a-website-with-the-academic-theme-in-blogdown/</link>
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/blogdown/creating-a-website-with-the-academic-theme-in-blogdown/</guid>
+      <guid>/post/creating-a-website-with-the-academic-theme-in-blogdown/</guid>
       <description>
 
 

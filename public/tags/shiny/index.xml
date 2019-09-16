@@ -18,7 +18,7 @@
       <pubDate>Mon, 11 Feb 2019 00:00:00 -0400</pubDate>
       
       <guid>/project/census_app/</guid>
-      <description></description>
+      <description>A simple shiny app that uses the tidycensus package to analyze some census data from the &lt;a href=&#34;https://www.census.gov/data.html&#34; target=&#34;_blank&#34;&gt;US Census Bureau API&lt;/a&gt;</description>
     </item>
     
   </channel>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Kevin Zolea</title>
@@ -106,13 +105,12 @@ leaflet() %&amp;gt;%
   addStyleEditor()&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;htmlwidget-3&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;leaflet html-widget&#34;&gt;&lt;/div&gt;
 &lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-3&#34;&gt;{&#34;x&#34;:{&#34;options&#34;:{&#34;crs&#34;:{&#34;crsClass&#34;:&#34;L.CRS.EPSG3857&#34;,&#34;code&#34;:null,&#34;proj4def&#34;:null,&#34;projectedBounds&#34;:null,&#34;options&#34;:{}}},&#34;setView&#34;:[[40,-74.4],8,[]],&#34;calls&#34;:[{&#34;method&#34;:&#34;addTiles&#34;,&#34;args&#34;:[&#34;//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&#34;,null,null,{&#34;minZoom&#34;:0,&#34;maxZoom&#34;:18,&#34;tileSize&#34;:256,&#34;subdomains&#34;:&#34;abc&#34;,&#34;errorTileUrl&#34;:&#34;&#34;,&#34;tms&#34;:false,&#34;noWrap&#34;:false,&#34;zoomOffset&#34;:0,&#34;zoomReverse&#34;:false,&#34;opacity&#34;:1,&#34;zIndex&#34;:1,&#34;detectRetina&#34;:false,&#34;attribution&#34;:&#34;&amp;copy; &lt;a href=\&#34;http://openstreetmap.org\&#34;&gt;OpenStreetMap&lt;\/a&gt; contributors, &lt;a href=\&#34;http://creativecommons.org/licenses/by-sa/2.0/\&#34;&gt;CC-BY-SA&lt;\/a&gt;&#34;}]},{&#34;method&#34;:&#34;addDrawToolbar&#34;,&#34;args&#34;:[null,&#34;draw&#34;,{&#34;position&#34;:&#34;topleft&#34;,&#34;draw&#34;:{&#34;polyline&#34;:{&#34;allowIntersection&#34;:true,&#34;drawError&#34;:{&#34;color&#34;:&#34;#b00b00&#34;,&#34;timeout&#34;:2500},&#34;guidelineDistance&#34;:20,&#34;maxGuideLineLength&#34;:4000,&#34;showLength&#34;:true,&#34;metric&#34;:true,&#34;feet&#34;:true,&#34;nautic&#34;:false,&#34;zIndexOffset&#34;:2000,&#34;shapeOptions&#34;:{&#34;stroke&#34;:true,&#34;color&#34;:&#34;#03f&#34;,&#34;weight&#34;:1,&#34;opacity&#34;:1,&#34;fill&#34;:false,&#34;fillColor&#34;:&#34;#03f&#34;,&#34;fillOpacity&#34;:0.4,&#34;clickable&#34;:true,&#34;smoothFactor&#34;:1,&#34;noClip&#34;:true},&#34;repeatMode&#34;:false},&#34;polygon&#34;:{&#34;showArea&#34;:false,&#34;metric&#34;:true,&#34;shapeOptions&#34;:{&#34;stroke&#34;:true,&#34;color&#34;:&#34;#03f&#34;,&#34;weight&#34;:1,&#34;opacity&#34;:1,&#34;fill&#34;:true,&#34;fillColor&#34;:&#34;#03f&#34;,&#34;fillOpacity&#34;:0.4,&#34;clickable&#34;:true,&#34;smoothFactor&#34;:1,&#34;noClip&#34;:true},&#34;repeatMode&#34;:false},&#34;circle&#34;:{&#34;shapeOptions&#34;:{&#34;stroke&#34;:true,&#34;color&#34;:&#34;#03f&#34;,&#34;weight&#34;:1,&#34;opacity&#34;:1,&#34;fill&#34;:true,&#34;fillColor&#34;:&#34;#03f&#34;,&#34;fillOpacity&#34;:0.4,&#34;clickable&#34;:true,&#34;smoothFactor&#34;:1,&#34;noClip&#34;:true},&#34;repeatMode&#34;:false,&#34;showRadius&#34;:true,&#34;metric&#34;:true,&#34;feet&#34;:true,&#34;nautic&#34;:false},&#34;rectangle&#34;:{&#34;showArea&#34;:true,&#34;metric&#34;:true,&#34;shapeOptions&#34;:{&#34;stroke&#34;:true,&#34;color&#34;:&#34;#03f&#34;,&#34;weight&#34;:1,&#34;opacity&#34;:1,&#34;fill&#34;:true,&#34;fillColor&#34;:&#34;#03f&#34;,&#34;fillOpacity&#34;:0.4,&#34;clickable&#34;:true,&#34;smoothFactor&#34;:1,&#34;noClip&#34;:true},&#34;repeatMode&#34;:false},&#34;marker&#34;:{&#34;zIndexOffset&#34;:2000,&#34;repeatMode&#34;:false},&#34;circlemarker&#34;:{&#34;stroke&#34;:true,&#34;color&#34;:&#34;#3388ff&#34;,&#34;weight&#34;:4,&#34;opacity&#34;:0.5,&#34;fill&#34;:true,&#34;fillOpacity&#34;:0.2,&#34;clickable&#34;:true,&#34;zIndexOffset&#34;:2000,&#34;repeatMode&#34;:false},&#34;singleFeature&#34;:false},&#34;edit&#34;:{&#34;edit&#34;:true,&#34;remove&#34;:true,&#34;selectedPathOptions&#34;:{&#34;dashArray&#34;:&#34;10, 10&#34;,&#34;weight&#34;:2,&#34;color&#34;:&#34;black&#34;,&#34;fill&#34;:true,&#34;fillColor&#34;:&#34;black&#34;,&#34;fillOpacity&#34;:0.6,&#34;maintainColor&#34;:false},&#34;allowIntersection&#34;:true}}]},{&#34;method&#34;:&#34;addLayersControl&#34;,&#34;args&#34;:[[],&#34;draw&#34;,{&#34;collapsed&#34;:false,&#34;autoZIndex&#34;:true,&#34;position&#34;:&#34;topright&#34;}]},{&#34;method&#34;:&#34;addStyleEditor&#34;,&#34;args&#34;:[{&#34;position&#34;:&#34;topleft&#34;,&#34;openOnLeafletDraw&#34;:true,&#34;useGrouping&#34;:false}]}]},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;div class=&#34;alert alert-note&#34;&gt;
+&lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    &lt;p&gt;A very interesting post on using the &lt;code&gt;addDrawToolbar()&lt;/code&gt; function to select multiple locations on your leaflet map in shiny can be seen here &lt;a href=&#34;https://redoakstrategic.com/geoshaper/&#34; target=&#34;_blank&#34;&gt;Selecting Multiple Locations on a Leaflet Map in R Shiny&lt;/a&gt;. Check it out!&lt;/p&gt;
-
+     A very interesting post on using the &lt;code&gt;addDrawToolbar()&lt;/code&gt; function to select multiple locations on your leaflet map in shiny can be seen here &lt;a href=&#34;https://redoakstrategic.com/geoshaper/&#34; target=&#34;_blank&#34;&gt;Selecting Multiple Locations on a Leaflet Map in R Shiny&lt;/a&gt;. Check it out! 
   &lt;/div&gt;
 &lt;/div&gt;
-
+&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;tip-2-have-map-zoom-into-polygon-once-polygon-is-clicked-in-shiny&#34; class=&#34;section level3&#34;&gt;
@@ -127,10 +125,10 @@ leaflet() %&amp;gt;%
     
     <item>
       <title>Using the USGS dataRetrieval package to analyze continuous water quality data</title>
-      <link>/post/usgs/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</link>
+      <link>/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/usgs/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</guid>
+      <guid>/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/</guid>
       <description>
 
 
@@ -280,10 +278,10 @@ p
     
     <item>
       <title>Creating a website with the academic theme in blogdown</title>
-      <link>/post/blogdown/creating-a-website-with-the-academic-theme-in-blogdown/</link>
+      <link>/post/creating-a-website-with-the-academic-theme-in-blogdown/</link>
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/blogdown/creating-a-website-with-the-academic-theme-in-blogdown/</guid>
+      <guid>/post/creating-a-website-with-the-academic-theme-in-blogdown/</guid>
       <description>
 
 
