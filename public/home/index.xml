@@ -120,6 +120,15 @@
     </item>
     
     <item>
+      <title>Gallery</title>
+      <link>/home/gallery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/home/gallery/</guid>
+      <description>        </description>
+    </item>
+    
+    <item>
       <title>Teaching</title>
       <link>/home/teaching/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
