@@ -60,6 +60,7 @@ categories:
 <p>For my analysis I am going to pull continuous specific conductance (SC) data for a site of intereset in NJ. With this specific conductance data, I will calculate Total dissolved solids (TDS). I will do this by using an equation from a correlation I made between SC &amp; TDS. Being that this isn’t the focus of the post, I will not go in detail about this. However, in a subsequent post I will explain how I did this.</p>
 <p><code>USGS_continuous_sc_data&lt;-readNWISuv(&quot;01408029&quot;,&quot;00095&quot;,tz = &quot;America/New_York&quot;)</code></p>
 <p>For simplicity, I am only looking up one site and one type of parameter. You can look up multiple sites and parameters in one pull. Now lets take a look at a preview of the pull we just made.</p>
+<pre><code>## Warning: package &#39;dataRetrieval&#39; was built under R version 3.5.2</code></pre>
 <pre><code>##   agency_cd  site_no            dateTime X_00095_00000 X_00095_00000_cd
 ## 1      USGS 01408029 2007-10-01 01:00:00           246                A
 ## 2      USGS 01408029 2007-10-01 01:15:00           246                A
@@ -152,6 +153,8 @@ p
 </div>
 <div id="final-product" class="section level3">
 <h3>Final Product:</h3>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.5.2</code></pre>
 <p><img src="/post/USGS/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 <div id="what-is-this-plot-showing" class="section level3">

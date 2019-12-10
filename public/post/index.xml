@@ -7,18 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;2019 Kevin Zolea</copyright>
-    <lastBuildDate>Wed, 27 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Tips For Customizing Your R Leaflet Map</title>
-      <link>/post/r-leaflet/tips-for-customizing-your-r-leaflet-map/</link>
-      <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Quick Tips For Customizing Your R Leaflet Map</title>
+      <link>/post/leaflet/quick-tips-for-customizing-your-r-leaflet-map/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/r-leaflet/tips-for-customizing-your-r-leaflet-map/</guid>
-      <description>Useful tips for adding some flavor to your interactive leaflet map</description>
+      <guid>/post/leaflet/quick-tips-for-customizing-your-r-leaflet-map/</guid>
+      <description>Useful tips for adding some flavor to your interactive leaflet map using the R leaflet package</description>
     </item>
     
     <item>

@@ -57,6 +57,7 @@
 &lt;p&gt;For my analysis I am going to pull continuous specific conductance (SC) data for a site of intereset in NJ. With this specific conductance data, I will calculate Total dissolved solids (TDS). I will do this by using an equation from a correlation I made between SC &amp;amp; TDS. Being that this isn’t the focus of the post, I will not go in detail about this. However, in a subsequent post I will explain how I did this.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;USGS_continuous_sc_data&amp;lt;-readNWISuv(&amp;quot;01408029&amp;quot;,&amp;quot;00095&amp;quot;,tz = &amp;quot;America/New_York&amp;quot;)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;For simplicity, I am only looking up one site and one type of parameter. You can look up multiple sites and parameters in one pull. Now lets take a look at a preview of the pull we just made.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dataRetrieval&amp;#39; was built under R version 3.5.2&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   agency_cd  site_no            dateTime X_00095_00000 X_00095_00000_cd
 ## 1      USGS 01408029 2007-10-01 01:00:00           246                A
 ## 2      USGS 01408029 2007-10-01 01:15:00           246                A
@@ -149,6 +150,8 @@ p
 &lt;/div&gt;
 &lt;div id=&#34;final-product&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Final Product:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.5.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.5.2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/USGS/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;what-is-this-plot-showing&#34; class=&#34;section level3&#34;&gt;

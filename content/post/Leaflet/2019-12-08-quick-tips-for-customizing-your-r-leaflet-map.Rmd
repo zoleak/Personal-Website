@@ -1,0 +1,224 @@
+---
+title: Quick Tips For Customizing Your R Leaflet Map
+author: Kevin Zolea
+date: '2019-12-09'
+slug: quick-tips-for-customizing-your-r-leaflet-map
+categories:
+  - R
+tags:
+  - R
+  - Leaflet
+header:
+  image: 'headers/leaflet.png'
+  caption: ''
+  focal_point: ''
+summary: Useful tips for adding some flavor to your interactive leaflet map using
+  the R leaflet package
+---
+### Overview 
+
+Maps are apart of our everyday lives. They can be seen in almost every industry and are useful for numerous different purposes. A lot of the time these maps are static. Sometimes, however, it's extremely useful to interact with the data on the map. This is where the [Leaflet](https://cran.r-project.org/web/packages/leaflet/leaflet.pdf){target="_blank"} package comes in. This post will go over what the ```Leaflet``` package is and provide some useful tips on how to make your new interactive map shine. 
+
+### What is ```Leaflet``` ?
+```Leaflet``` is an open-source ```JavaScript``` library for mobile-friendly interactive maps. It's used by a great deal of websites and GIS specialists all over the world! The great thing about ```Leaflet``` is that it's super easy to learn and there's so many tutorials out there to help you. Luckily, instead of having to learn ```JavaScript``` theres's an R ```Leaflet``` package. This R package makes it extremely easy to integrate and control ```Leaflet``` maps in R.
+
+### Prerequisites:
+
+Before we jump headfirst into some of the tips, I believe you must go over over some material on the ```Leaflet``` package in R. This post assumes you know the basics of ```Leaflet``` but just in case someone got here and has no clue what I am talking about here are some resources I found helpful when I first started using the package.
+
+* [Leaflet for R - Introduction](https://rstudio.github.io/leaflet/){target="_blank"}
+
+* [Creating Interactive Spatial Maps in R Using Leaflet](https://www.earthdatascience.org/courses/earth-analytics/get-data-using-apis/leaflet-r/){target="_blank"}
+
+* [A Beginner’s Exploration of Shiny and Leaflet for Interactive Mapping](https://www.datascience.com/blog/beginners-guide-to-shiny-and-leaflet-for-interactive-mapping){target="_blank"}
+
+* [Leaflet Mapping in Rstudio - Introduction](https://www.youtube.com/watch?v=vl9D3uTk36k&list=PLmFi_ou2WwcEyPq7Y9DvzFRLlp9-XvFDb){target="_blank"} (Series of videos)
+
+### Tip #1: Use the ```leaflet.extras``` package to add extra functionality to your map
+
+The [```leaflet.extras```](https://github.com/bhaskarvk/leaflet.extras) package is a great tool to add some cool features to your map using various [Leaflet plugins](https://leafletjs.com/plugins) (**Note: Not all the plugins are integrated**). I won't go over all the various plugins, instead, I will show you the functions I use and find most useful.
+
+#### Reset map's view to original view
+
+Resetting your map's view to it's original view is very simple. It can be done with one function: ```addResetMapButton```
+
+```
+library(leaflet)
+library(leaflet.extras)
+
+leaflet(options = leafletOptions(minZoom = 7))%>%
+  addTiles()%>%
+  addResetMapButton()
+```
+
+```{r echo = FALSE, message=FALSE}
+
+### Load in necessary packages ###
+library(leaflet)
+library(leaflet.extras)
+
+### Create leaflet map ###
+leaflet()%>%
+  addTiles()%>%
+  addResetMapButton()
+
+```
+
+
+#### Adding GPS location (**Note: Open the map in a browser not inside Rstudio! Allow the request for location access**)
+```
+library(leaflet)
+library(leaflet.extras)
+
+map <- leaflet() %>% addTiles()
+
+map <- addControlGPS(map, options = gpsOptions(position = "topleft", activate = TRUE, 
+                                               autoCenter = TRUE, maxZoom = 10, 
+                                               setView = TRUE))
+activateGPS(map)
+
+```
+
+```{r echo = FALSE, message=FALSE}
+library(leaflet)
+library(leaflet.extras)
+
+map <- leaflet() %>% addTiles()
+
+map <- addControlGPS(map, options = gpsOptions(position = "topleft", activate = TRUE, 
+                                               autoCenter = TRUE, maxZoom = 10, 
+                                               setView = TRUE))
+activateGPS(map)
+
+```
+
+#### Draw features on Leaflet map and have ability to style
+```
+library(leaflet)
+library(leaflet.extras)
+
+leaflet() %>%
+  setView(lng = -74.4 ,lat =40, zoom = 8)%>%
+  addTiles() %>%
+  addDrawToolbar(
+    targetGroup='draw',
+    editOptions = editToolbarOptions(selectedPathOptions = selectedPathOptions()))  %>%
+  addLayersControl(overlayGroups = c('draw'), options =
+                     layersControlOptions(collapsed=FALSE)) %>%
+  addStyleEditor()
+```
+```{r echo = FALSE, message=FALSE}
+
+library(leaflet)
+library(leaflet.extras)
+
+leaflet() %>%
+  setView(lng = -74.4 ,lat =40, zoom = 7)%>%
+  addTiles() %>%
+  addDrawToolbar(
+    targetGroup='draw',
+    editOptions = editToolbarOptions(selectedPathOptions = selectedPathOptions()))  %>%
+  addLayersControl(overlayGroups = c('draw'), options =
+                     layersControlOptions(collapsed=FALSE)) %>%
+  addStyleEditor()
+
+
+```
+
+
+{{% alert note %}}
+A very interesting post on using the ```addDrawToolbar() ``` function to select multiple locations on your ```leaflet``` map in ```shiny``` can be seen here [Selecting Multiple Locations on a Leaflet Map in R Shiny](https://redoakstrategic.com/geoshaper/){target="_blank"}. Check it out!
+{{% /alert %}}
+
+### Tip #2: Have map zoom into polygon once polygon is clicked in shiny
+
+Adding polygons to a ```leaflet``` map is a very common thing to do in ```leaflet```. This can be achieved by using the ```addPolygons()``` function. By giving the user the ability to zoom into the polygon, once a polygon is clicked, it makes it a lot easier to focus in on a particular area of the map. However, before we can use the ```addPolygons()``` function we first need to read in a polygon into R! There are many different ways to read in polygons into R but I find the ```sf``` package to be the best. To learn more about the ```sf``` package you can go [here](https://r-spatial.github.io/sf/articles/sf1.html) for an overview. Here is a minimal example of reading in a polygon into R and adding it to a ```leaflet``` map.
+
+```
+library(leaflet)
+library(sf)
+
+wma<-st_read(dsn="/Users/kevinzolea/Desktop/Personal_Website/content/post/Leaflet/",layer = "WMAs")
+
+wma<-st_transform(wma,crs="+init=epsg:4326")
+
+wma<-st_zm(wma,drop = T, what = "ZM")
+
+
+leaflet() %>%
+  setView(lng = -74.4 ,lat =40, zoom = 7)%>%
+  addTiles() %>%
+  addPolygons(data=wma)
+  
+```
+
+```{r echo = FALSE, message= FALSE,warning= FALSE, cache=FALSE}
+library(leaflet)
+library(sf)
+
+wma<-st_read(dsn="/Users/kevinzolea/Desktop/Personal_Website/content/post/Leaflet/",layer = "WMAs")
+
+wma<-st_transform(wma,crs="+init=epsg:4326")
+
+wma<-st_zm(wma,drop = T, what = "ZM")
+
+
+leaflet() %>%
+  setView(lng = -74.4 ,lat =40, zoom = 7)%>%
+  addTiles() %>%
+  addPolygons(data=wma)
+  
+```
+
+Since you don't have the shapefile I used to create the above map, you won't get the map by running the code. If you change the arguments in the function for your specific dataset you should get a map with polygons. You have to use ```st_transform``` to transform the projection to work with ```leaflet```. Now that you have the polygon loaded into R and working with ```leaflet```.. you can now bring ```shiny``` into the picture. To have the map zoom into a polygon once the polygon is clicked in shiny is actually quite simple. It only requires a few more lines of code. Here is a simple example, adding onto the example we used above. 
+
+```
+library(leaflet)
+library(leaflet.extras)
+library(sf)
+library(shiny)
+
+wma<-st_read(dsn="/Users/kevinzolea/Desktop/Personal_Website/content/post/Leaflet/",layer = "WMAs")
+
+wma<-st_transform(wma,crs="+init=epsg:4326")
+
+wma<-st_zm(wma,drop = T, what = "ZM")
+
+ui <- fluidPage(
+    leafletOutput("mymap"))
+
+server <- function(input, output) {
+  
+  output$mymap<-renderLeaflet({
+    leaflet()%>%
+      setView(lng = -74.4 ,lat =40, zoom = 7)%>%
+      addTiles()%>%
+      addPolygons(data=wma,fillColor = "green")
+    
+  })
+  
+  observe({
+    click <- input$mymap_shape_click
+    if(is.null(click))
+      return()
+    else
+      leafletProxy("mymap")%>%
+      setView(lng = click$lng , lat = click$lat, zoom=10)
+  })
+  
+  
+}
+shinyApp(ui = ui, server = server)
+
+
+```
+The video below is how the click to zoom should work.
+![](https://media.giphy.com/media/dvb1mVPllDBYOr09E2/giphy.gif)
+
+#### Wrapping Up
+
+So as you can see, the ```leaflet``` package is a great tool to make some awesome interactive maps in R. While I gave you a couple tips to make your map have some flavor, the possibilites are endless to add some cool features to your map. As the author Napolean Hill once said, (**"Whatever the mind can conceive and believe, it can achieve."**)
+
+
+
+
