@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.0.0">
+  <meta name="generator" content="Hugo 0.57.2" />
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Kevin Zolea">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Using the rnoaa package to get weather data into R and plot with ggplot2">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/snownj/snowfall_nj_kz/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css" crossorigin="anonymous">
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+    
+    
+    
+    
+      
+    
+    
+    
+    <link rel="stylesheet" href="/css/academic.f45f7208cf9c65718e4ffc7de562f3f1.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-135220535-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Kevin Zolea">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Kevin Zolea">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/snownj/snowfall_nj_kz/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Kevin Zolea">
+  <meta property="og:url" content="/post/snownj/snowfall_nj_kz/">
+  <meta property="og:title" content="Making a plot of December snowfall data in NJ with R&#39;s ggplot2 &amp; rnoaa | Kevin Zolea">
+  <meta property="og:description" content="Using the rnoaa package to get weather data into R and plot with ggplot2"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-12-20T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-12-20T00:00:00&#43;00:00">
+  
+
+  
+
+  
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c9a3b889f845de9"></script>
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2506564574180703",
+    enable_page_level_ads: true
+  });
+</script>
+
+  <title>Making a plot of December snowfall data in NJ with R&#39;s ggplot2 &amp; rnoaa | Kevin Zolea</title>
+
+
+
+
+</head>
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+  
+
+  
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Kevin Zolea</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#posts">
+            
+            <span>Blog</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/files/resume.pdf">
+            
+            <span>Resume</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.r-bloggers.com" target="_blank" rel="noopener">
+            
+            <span>R Bloggers</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<div id="THECONTENT">  
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Making a plot of December snowfall data in NJ with R&#39;s ggplot2 &amp; rnoaa</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2019-12-20 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-12-20 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Dec 20, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/snownj/snowfall_nj_kz/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="/categories/r/">R</a>
+    
+  </span>
+  
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Making%20a%20plot%20of%20December%20snowfall%20data%20in%20NJ%20with%20R%27s%20ggplot2%20%26%20rnoaa&amp;url=%2fpost%2fsnownj%2fsnowfall_nj_kz%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fsnownj%2fsnowfall_nj_kz%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fsnownj%2fsnowfall_nj_kz%2f&amp;title=Making%20a%20plot%20of%20December%20snowfall%20data%20in%20NJ%20with%20R%27s%20ggplot2%20%26%20rnoaa"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fsnownj%2fsnowfall_nj_kz%2f&amp;title=Making%20a%20plot%20of%20December%20snowfall%20data%20in%20NJ%20with%20R%27s%20ggplot2%20%26%20rnoaa"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Making%20a%20plot%20of%20December%20snowfall%20data%20in%20NJ%20with%20R%27s%20ggplot2%20%26%20rnoaa&amp;body=%2fpost%2fsnownj%2fsnowfall_nj_kz%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+
+<hr />
+<div id="what-is-this-post-about" class="section level2">
+<h2>What is this post about?</h2>
+<p>Today on my way to work I was speaking to my girlfriend on the phone and somehow a conversation started about what are the chances that we will have a white Christmas this year. Being that Christmas is only a few days out and the fact that I love anything relating to the environment and data. I figured I would get to the bottom of this question and analyze some historical data to see what the past 10 years have shown. I have read some articles on this topic but figured it would be a fun little project to do in R. So in this post I will show you how you can pull data into R and create a cool plot with the <code>ggplot2</code> package. Being that I live in New Jersey, I will analyze data from New Jersey weather stations near me.</p>
+</div>
+<div id="acquiring-the-data" class="section level2">
+<h2>Acquiring the data</h2>
+<p>There are numerous ways to access weather data online but for my learning purposes and hopes that this post will be helpful to someone else, I am going to use the <code>rnoaa</code> package. The <a href="https://docs.ropensci.org/rnoaa/index.html" target="_blank">rnoaa</a> package is an R interface to many of NOAA’s data sources. It is a package maintained by <a href="https://ropensci.org/" target="_blank">rOpenSci</a>. In short, the <code>rnoaa</code> package makes it extremely easy to access data from NOAA’s API. One of the best parts about this package is it brings the data into R in an easy to use format. Being that it would take a great deal of time to understand how to make requests to NOAA’s API, this package takes away most of the leg work. To start, you need to request a key to gain access to NOAA’s API. You can do this by going <a href="https://www.ncdc.noaa.gov/cdo-web/token" target="_blank">here</a> and provide your email. Within seconds you should receive an email with your key.</p>
+<p>Now that we have our key, we can access any of the data sources in <code>rnoaa</code>. You can see the full list of data sets by going to <a href="https://docs.ropensci.org/rnoaa/index.html" target="_blank">rnoaa’s website</a>. For this blog post, I am going to access data from the Global Historical Climate Network (GHCN) dataset. This dataset includes daily land surface observations from weather stations around the world. Since I want snowfall data for the past 10 years, this is a great place to get it. The function in <code>rnoaa</code> that can do such a query is <code>meteo_pull_monitors</code>. This function takes a vector of one or more weather stations IDs from the GHCN dataset and joins them together in a single data frame. Before we can do this ,however, we need to figure out which stations we want data from. To do this let’s use the <code>ncdc_stations</code> function and put in the FIPS code for NJ (Middlesex County).</p>
+<pre><code>
+
+# If rnoaa isn&#39;t installed use the following first before trying to load it 
+# install.packages(&#39;rnoaa&#39;)
+
+library(rnoaa)
+
+key&lt;-&quot;GmjHeChrRWYy...&quot;
+
+stations &lt;- ncdc_stations(datasetid=&#39;GHCND&#39;, 
+              locationid=&#39;FIPS:34023&#39;,
+              token = key)
+
+stations$data  
+
+</code></pre>
+<pre><code>## Warning: package &#39;rnoaa&#39; was built under R version 3.5.2</code></pre>
+<pre><code>##   elevation    mindate    maxdate latitude
+## 1      31.4 2008-01-27 2008-09-07 40.52446
+## 2      32.6 2008-01-28 2019-12-28 40.44700
+## 3      29.0 2008-02-12 2017-05-16 40.30030
+## 4      36.6 2008-03-10 2010-07-28 40.33919
+## 5      67.1 2008-03-10 2019-04-08 40.40990
+## 6      15.8 2008-04-15 2008-10-06 40.48711
+##                                name datacoverage                id
+## 1        PERTH AMBOY 1.2 WNW, NJ US       0.7600 GHCND:US1NJMD0001
+## 2  NORTH BRUNSWICK TWP 1.5 W, NJ US       0.8482 GHCND:US1NJMD0002
+## 3       CRANBURY TWP 0.9 SSW, NJ US       0.4654 GHCND:US1NJMD0006
+## 4         MONROE TWP 1.6 NNW, NJ US       0.6613 GHCND:US1NJMD0007
+## 5 SOUTH BRUNSWICK TWP 3.1 NW, NJ US       0.9657 GHCND:US1NJMD0009
+## 6          SOUTH AMBOY 0.9 W, NJ US       0.9086 GHCND:US1NJMD0011
+##   elevationUnit longitude
+## 1        METERS -74.29210
+## 2        METERS -74.50800
+## 3        METERS -74.52860
+## 4        METERS -74.44610
+## 5        METERS -74.57300
+## 6        METERS -74.29501</code></pre>
+<p>This gives us the necessary information so we can start to pull the data. We can see what the minimum dates, maximum dates, latitude, station name, station ID, etc. so we can start getting an idea of what the data universe is for the stations around our area of interest. For my specific analysis, I want to find the stations with at least 10 years of data inside Middlesex County, NJ. From the looks of it, it seems as if the only ones are the following:</p>
+<pre><code>middlesex_stations&lt;-c(&quot;US1NJMD0062&quot;,&quot;US1NJMD0002&quot;,&quot;US1NJMD0063&quot;,&quot;US1NJMD0009&quot;,
+            &quot;US1NJMD0024&quot;,&quot;GHCND:US1NJMD0028&quot;)</code></pre>
+</div>
+<div id="pull-data-from-noaas-api-with-meteo_pull_monitors" class="section level2">
+<h2>Pull data from NOAA’s API with <code>meteo_pull_monitors</code></h2>
+<p>Now it’s time to use the <code>meteo_pull_monitors</code> function! This function (which is the main function to get the data) has a few arguments you can give it. A <strong>brief</strong> description of each one is below:</p>
+<ul>
+<li>monitors - A character vector listing the station IDs for all weather stations the user would like to pull</li>
+<li>keep_flags - TRUE/FALSE to keep any flags that each weather variable might have associated with the data</li>
+<li>date_min - A character string giving the earliest date the user would like in the final output formatted as “yyyy-mm-dd”</li>
+<li>date_max - A character string giving the latest date the user would like in the final output formatted as “yyyy-mm-dd”</li>
+<li>var - A character vector specifying the weather parameters to keep in the final data (ex: <code>&quot;SNOW&quot;</code>) A full list of the different possible weather variations can be found <a href="https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt" target="_blank">here</a></li>
+</ul>
+<pre><code>middlesex_snow&lt;-meteo_pull_monitors(monitors=middlesex_stations,var = &quot;SNOW&quot;)
+</code></pre>
+<p>Taking a look at the data frame we should see something like this:</p>
+<pre><code>## Warning in meteo_pull_monitors(monitors = middlesex_stations, var = &quot;SNOW&quot;): The following stations could not be pulled from the GHCN ftp:
+##  GHCND:US1NJMD0028 
+## Any other monitors were successfully pulled from GHCN.</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   id          date        snow
+##   &lt;chr&gt;       &lt;date&gt;     &lt;dbl&gt;
+## 1 US1NJMD0002 2008-01-01    NA
+## 2 US1NJMD0002 2008-01-02    NA
+## 3 US1NJMD0002 2008-01-03    NA
+## 4 US1NJMD0002 2008-01-04    NA
+## 5 US1NJMD0002 2008-01-05    NA
+## 6 US1NJMD0002 2008-01-06    NA</code></pre>
+<p>From my very <strong><em>basic</em></strong> understanding of the package, I believe the warning message above is because the station <code>GHCND:US1NJMD0028</code> doesn’t have the variable <code>&quot;SNOW&quot;</code>. So this now leads us with only three stations to look at it.</p>
+</div>
+<div id="filter-the-data-frame-with-dplyr" class="section level2">
+<h2>Filter the data frame with <code>dplyr</code></h2>
+<p>Next, I want to filter the data frame to only include data for the December months, get rid of any missing data, and convert mm to inches. I am going to do this with the <code>dplyr</code> package. The <code>dplyr</code> package is apart of the <code>tidyverse</code> and is a great resource for data manipulation. You can learn more about the <code>dplyr</code> package <a href="https://dplyr.tidyverse.org/" target="_blank">here</a></p>
+<pre><code>library(tidyverse)
+library(lubridate)
+library(measurements) # used to convert from mm to in
+
+middlesex_stations&lt;-middlesex_snow%&gt;%
+  dplyr::mutate(month = lubridate::month(date), snow = conv_unit(snow,&quot;mm&quot;,&quot;inch&quot;))%&gt;%
+  dplyr::filter(!snow == is.na(snow),month == 12)
+</code></pre>
+<p>After these filters, this leaves us with a data frame consisting of 39 obs. of 4 variables</p>
+</div>
+<div id="make-plot-with-ggplot2" class="section level2">
+<h2>Make plot with <code>ggplot2</code></h2>
+<p>One of the most popular data visualization in R is with <code>ggplot2</code>. I personally like <code>ggplot2</code> because of how easy it is to learn/use and how great it works with the rest of the <code>tidyverse</code>. To learn more about <code>ggplot2</code> head over to the <a href="https://ggplot2.tidyverse.org/" target="_blank">website</a>. With just two lines of code we can make a plot with the data frame we pulled from <code>rnoaa</code> above.</p>
+<pre><code>library(tidyverse)
+
+
+ggplot(data = middlesex_stations,aes(x=date,y=snow,color = id))+
+  geom_line()
+</code></pre>
+<p><img src="/post/SnowNJ/snowfall_nj_kz_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>As we can see from this plot, these three stations haven’t gotten a great deal of snow in December within the past 10 years. Granted, there are some gaps in the dataset and this probably isn’t the best dataset we could have used but it’s good enough for this blog post. One point of this plot that specifically stands out is the 22.9 in. snow total for US1NJMD0002 in 2010. This was a major storm that hit the east coast on December 27, 2010. The “Boxing Day Blizzard of 2010”, as they called it, was a rapidly developing nor’easter that completely tore through New Jersey. This is very noticeable in the plot, as a majority of the snowfall events didn’t even go over 5 in. Another thing to note after looking over the data frame is that there was no day in the past 10 years where there was snowfall on Christmas.</p>
+</div>
+<div id="customize-your-new-ggplot" class="section level2">
+<h2>Customize your new ggplot</h2>
+<p>Let’s take it a step further and customize the plot we just made. For fun, let’s try and find a picture of snow from the web and add it to the background. We can do this by using the <a href="https://cran.r-project.org/web/packages/ggimage/vignettes/ggimage.html"><code>ggimage</code></a> package. The <code>ggimage</code> package is a great package to use images in <code>ggplot2</code>.</p>
+<div id="add-background-image-from-web-to-plot" class="section level4">
+<h4>Add background image from web to plot</h4>
+<pre><code>library(ggimage)
+
+p&lt;-ggplot(data = middlesex_stations,aes(x=date,y=snow,color = id))+
+  geom_line()
+
+img&lt;-&quot;http://funny-photo.s3.amazonaws.com/preview/snow_effect/falling_snow_effect.jpeg&quot;
+ggbackground(p,img)
+</code></pre>
+<p><img src="/post/SnowNJ/snowfall_nj_kz_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>There’s a lot more customization you can do but that’s for another day. That’s the awesome thing about the <code>ggplot2</code> the options are endless for the amount of creativity you can pour into your plots. I hope you found this post helpful. If you have any questions, comments, or concerns please feel free to comment below. Thanks!</p>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/r/">R</a>
+  
+  <a class="badge badge-light" href="/tags/ggplot2/">ggplot2</a>
+  
+</div>
+
+
+
+
+    
+      
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  
+  <img class="portrait mr-3" src="/author/admin/avatar_hu3d3a9716da555ce7604b86e918338db9_977878_250x250_fill_box_center_2.png" itemprop="image" alt="Avatar">
+  
+
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="/authors/admin">Kevin Zolea</a></h5>
+    <h6 class="card-subtitle">Environmental Specialist</h6>
+    
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="/#contact" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.linkedin.com/in/kevinmichaelzolea/" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/zoleak" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/leaflet/quick-tips-for-customizing-your-r-leaflet-map/">Quick Tips For Customizing Your R Leaflet Map</a></li>
+          
+          <li><a href="/post/using-the-usgs-dataretrieval-package-to-analyze-water-quality-trends/">Using the USGS dataRetrieval package to analyze continuous water quality data</a></li>
+          
+          <li><a href="/post/creating-a-website-with-the-academic-theme-in-blogdown/">Creating a website with the academic theme in blogdown</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kevinzolea-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<footer class="site-footer">
+  
+  <div id="botbar1"> </div>
+  <div style="position: relative; width: 0; height: 0; z-index: 200;">
+    <div id="feynmanfoot" style="background-image:url('//img/');"></div>
+  </div>
+  <div style="height: 20px">
+    
+  </div>
+  
+  <div class="container">
+
+
+       <div>
+        <div class="Footer_inner_left" >
+          
+          All opinions expressed here are my own and do not necessarily represent those of any other agencies or groups.
+        </div>
+        <div class="col-sm-4" >
+          Powered by the
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> engine
+          
+          Adapted from <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic</a>.
+          
+          &copy Kevin Zolea 2019
+        </div>
+      </div>
+
+
+
+
+
+  </div> 
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div> 
+
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//kevinzolea-com.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.802925a149e664aae17650495910b191.js"></script>
+
+  </body>
+</html>
+

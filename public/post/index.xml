@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;2019 Kevin Zolea</copyright>
-    <lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Making a plot of December snowfall data in NJ with R&#39;s ggplot2 &amp; rnoaa</title>
+      <link>/post/snownj/snowfall_nj_kz/</link>
+      <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/snownj/snowfall_nj_kz/</guid>
+      <description>Using the rnoaa package to get weather data into R and plot with ggplot2</description>
+    </item>
     
     <item>
       <title>Quick Tips For Customizing Your R Leaflet Map</title>

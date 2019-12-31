@@ -4,7 +4,15 @@
     <url>
     
       <loc>/categories/</loc>
-      <lastmod>2019-12-09T00:00:00+00:00</lastmod>
+      <lastmod>2019-12-20T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/ggplot2/</loc>
+      <lastmod>2019-12-20T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -12,7 +20,47 @@
     <url>
     
       <loc>/</loc>
-      <lastmod>2019-12-09T00:00:00+00:00</lastmod>
+      <lastmod>2019-12-20T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/snownj/snowfall_nj_kz/</loc>
+      <lastmod>2019-12-20T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/</loc>
+      <lastmod>2019-12-20T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/r/</loc>
+      <lastmod>2019-12-20T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/categories/r/</loc>
+      <lastmod>2019-12-20T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/</loc>
+      <lastmod>2019-12-20T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -27,39 +75,7 @@
     
     <url>
     
-      <loc>/post/</loc>
-      <lastmod>2019-12-09T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>/post/leaflet/quick-tips-for-customizing-your-r-leaflet-map/</loc>
-      <lastmod>2019-12-09T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/categories/r/</loc>
-      <lastmod>2019-12-09T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tags/r/</loc>
-      <lastmod>2019-12-09T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tags/</loc>
       <lastmod>2019-12-09T00:00:00+00:00</lastmod>
     </url>
     
@@ -91,14 +107,6 @@
     
     <url>
     
-      <loc>/categories/water-quality/</loc>
-      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>/tags/water-quality/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     </url>
@@ -107,8 +115,8 @@
     
     <url>
     
-      <loc>/categories/blogdown/</loc>
-      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+      <loc>/categories/water-quality/</loc>
+      <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -116,6 +124,14 @@
     <url>
     
       <loc>/tags/blogdown/</loc>
+      <lastmod>2019-02-13T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/categories/blogdown/</loc>
       <lastmod>2019-02-13T00:00:00+00:00</lastmod>
     </url>
     
@@ -187,110 +203,6 @@
     
     <url>
     
-      <loc>/tutorial/example/</loc>
-      <lastmod>2018-09-09T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tutorial/</loc>
-      <lastmod>2018-09-09T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/talk/example/</loc>
-      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/talk/</loc>
-      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/publication_types/2/</loc>
-      <lastmod>2015-09-01T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/publication/person-re-id/</loc>
-      <lastmod>2015-09-01T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/authors/</loc>
-      <lastmod>2015-09-01T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/authors/ga-cushen/</loc>
-      <lastmod>2015-09-01T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/publication_types/</loc>
-      <lastmod>2015-09-01T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/publication/</loc>
-      <lastmod>2015-09-01T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/publication_types/1/</loc>
-      <lastmod>2013-07-01T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/publication/clothing-search/</loc>
-      <lastmod>2013-07-01T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/authors/ms-nixon/</loc>
-      <lastmod>2013-07-01T00:00:00-04:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>/author/admin/</loc>
     </url>
     
@@ -299,6 +211,20 @@
     <url>
     
       <loc>/author/</loc>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/authors/</loc>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/publication_types/</loc>
     </url>
     
   

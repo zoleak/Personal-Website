@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Authors on Kevin Zolea</title>
-    <link>/authors/</link>
-    <description>Recent content in Authors on Kevin Zolea</description>
+    <title>Publication_types on Kevin Zolea</title>
+    <link>/publication_types/</link>
+    <description>Recent content in Publication_types on Kevin Zolea</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;2019 Kevin Zolea</copyright>
     
-	<atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/publication_types/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
