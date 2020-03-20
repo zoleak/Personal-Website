@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>NJ Air Quality Viewer</title>
+      <link>/project/air_quality_app/</link>
+      <pubDate>Mon, 11 Feb 2019 00:00:00 -0400</pubDate>
+      
+      <guid>/project/air_quality_app/</guid>
+      <description>A shiny app to view NJ&amp;rsquo;s air quality data trends for criteria air pollutants from 1990-2018</description>
+    </item>
+    
+    <item>
       <title>US Census Bureau Shiny App</title>
       <link>/project/census_app/</link>
       <pubDate>Mon, 11 Feb 2019 00:00:00 -0400</pubDate>

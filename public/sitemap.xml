@@ -43,7 +43,7 @@
     
     <url>
     
-      <loc>/tags/r/</loc>
+      <loc>/categories/r/</loc>
       <lastmod>2019-12-20T00:00:00+00:00</lastmod>
     </url>
     
@@ -51,7 +51,7 @@
     
     <url>
     
-      <loc>/categories/r/</loc>
+      <loc>/tags/r/</loc>
       <lastmod>2019-12-20T00:00:00+00:00</lastmod>
     </url>
     
@@ -83,7 +83,7 @@
     
     <url>
     
-      <loc>/categories/roadsalt/</loc>
+      <loc>/tags/roadsalt/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     </url>
     
@@ -91,7 +91,7 @@
     
     <url>
     
-      <loc>/tags/roadsalt/</loc>
+      <loc>/categories/roadsalt/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     </url>
     
@@ -107,7 +107,7 @@
     
     <url>
     
-      <loc>/tags/water-quality/</loc>
+      <loc>/categories/water-quality/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     </url>
     
@@ -115,7 +115,7 @@
     
     <url>
     
-      <loc>/categories/water-quality/</loc>
+      <loc>/tags/water-quality/</loc>
       <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     </url>
     
@@ -172,6 +172,14 @@
     <url>
     
       <loc>/tags/meteorology/</loc>
+      <lastmod>2019-02-11T00:00:00-04:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/air_quality_app/</loc>
       <lastmod>2019-02-11T00:00:00-04:00</lastmod>
     </url>
     
