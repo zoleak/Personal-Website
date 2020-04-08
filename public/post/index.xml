@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;2019 Kevin Zolea</copyright>
-    <lastBuildDate>Fri, 20 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tracking Covid19 Cases Throughout NJ with R</title>
+      <link>/post/covid19_nj/tracking-covid19-cases-throughout-nj-with-r/</link>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/covid19_nj/tracking-covid19-cases-throughout-nj-with-r/</guid>
+      <description>Creating an animated time series map showing the spread of covid19 throughout NJ using the R programming language.</description>
+    </item>
     
     <item>
       <title>Making a plot of December snowfall data in NJ with R&#39;s ggplot2 &amp; rnoaa</title>
