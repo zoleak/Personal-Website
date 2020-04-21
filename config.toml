@@ -13,7 +13,7 @@ baseurl = "https://kevinzolea.com/"
 
 # Enter a copyright notice to display in the site footer.
 # To display a copyright symbol, type `&copy;`.
-copyright = "&copy;2019 Kevin Zolea"
+copyright = "&copy;2020 Kevin Zolea"
 
 # Enable analytics by entering your Google Analytics tracking ID
 googleAnalytics = "UA-135220535-1"

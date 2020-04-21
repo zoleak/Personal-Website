@@ -525,7 +525,7 @@
 covid19_data&lt;-read_csv(&quot;us_counties.csv&quot;) #function that reads in csv files</code></pre>
 <p>Now that the data is read in.. lets check the structure of the data</p>
 <pre class="r"><code>str(covid19_data)</code></pre>
-<pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 38197 obs. of  6 variables:
+<pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 61971 obs. of  6 variables:
 ##  $ date  : Date, format: &quot;2020-01-21&quot; &quot;2020-01-22&quot; ...
 ##  $ county: chr  &quot;Snohomish&quot; &quot;Snohomish&quot; &quot;Snohomish&quot; &quot;Cook&quot; ...
 ##  $ state : chr  &quot;Washington&quot; &quot;Washington&quot; &quot;Washington&quot; &quot;Illinois&quot; ...
@@ -620,11 +620,11 @@ NJ_covid19_shapes&lt;-st_as_sf(NJ_covid19_shapes)
 covid_map&lt;-ggplot()+
   geom_sf(data = NJ_counties,fill = &quot;white&quot;)+
   geom_sf(data = NJ_covid19_shapes,aes(fill=cases))+
-  ggtitle(&quot;Spread of Covid19 Throughout New Jersey&quot;)+
+  ggtitle(&quot;Spread of COVID-19 Throughout New Jersey&quot;)+
   xlab(&quot;&quot;)+
   ylab(&quot;&quot;)+
   labs(subtitle = &quot;Date: {current_frame}&quot;,
-       caption = &quot;Date Source: The New York Times\nAuthor: Kevin Zolea&quot;)+
+       caption = &quot;Data Source: The New York Times\nAuthor: Kevin Zolea&quot;)+
   cowplot::background_grid(major = &quot;none&quot;, minor = &quot;none&quot;) +
   theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(),
         axis.text.y = element_blank(), axis.ticks.y = element_blank(),

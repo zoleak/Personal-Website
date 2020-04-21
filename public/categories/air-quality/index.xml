@@ -1,0 +1,45 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>air quality on Kevin Zolea</title>
+    <link>/categories/air-quality/</link>
+    <description>Recent content in air quality on Kevin Zolea</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy;2020 Kevin Zolea</copyright>
+    <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/categories/air-quality/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Air quality &amp; the COVID-19 crisis in NJ</title>
+      <link>/post/air-quality-the-covid-19-crisis-in-nj/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/air-quality-the-covid-19-crisis-in-nj/</guid>
+      <description>
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Since my last post, I have seen some articles in the media discussing the link between COVID-19 and air quality. Being that I work for the &lt;a href=&#34;http://njaqinow.net&#34; target=&#34;_blank&#34;&gt;Bureau of Air Monitoring&lt;/a&gt;, I felt like it would only be right to perform my own analysis on the vast amount of data we collect. If you’d like to read over some of the above mentioned articles you can find them at the following links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.northjersey.com/story/news/coronavirus/2020/03/25/nj-coronavirus-states-air-quality-expected-rebound-amid-shutdown/2905998001/&#34; target=&#34;_blank&#34;&gt;New Jersey’s poor air quality expected to improve significantly amid coronavirus shutdown&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.nj.com/coronavirus/2020/04/njs-air-is-the-cleanest-its-been-since-911-due-to-coronavirus-shutdown.html&#34; target=&#34;_blank&#34;&gt;N.J.’s air is the cleanest it’s been since 9/11 due to coronavirus shutdown&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.nj.com/coronavirus/2020/04/njs-coronavirus-death-toll-is-likely-higher-thanks-to-decades-of-dirty-air.html&#34; target=&#34;_blank&#34;&gt;N.J.’s coronavirus death toll is likely higher thanks to decades of dirty air&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;motivation-for-this-post&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Motivation for this post&lt;/h1&gt;
+&lt;p&gt;I received a message from an old collegue of mine asking if I had taken a look at the air quality since the crisis started. This got me thinking about how I can use the power of R to create some plots and maps of the change of air quality throughout the state. I will be taking a look at a few of the criteria air pollutants at some of our major sites.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-are-criteria-air-pollutants&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What are criteria air pollutants?&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.epa.gov/criteria-air-pollutants&#34; target=&#34;_blank&#34;&gt;Criteria air pollutants&lt;/a&gt; are six common air pollutants of concern. The criteria pollutants are carbon monoxide, lead, nitrogen dioxide, ozone, particulate matter, and sulfur dioxide. These criteria air pollutants can cause health effects to the population at certain exposure levels. The Clean Air Act requires the &lt;a href=&#34;https://www.epa.gov&#34; target=&#34;_blank&#34;&gt;Environmental Protection Agency&lt;/a&gt; (EPA) to set standards called the &lt;a href=&#34;https://www.epa.gov/criteria-air-pollutants/naaqs-table&#34; target=&#34;_blank&#34;&gt;National Ambient Air Quality Standards&lt;/a&gt; (NAAQS) to limit the concentrations of these six criteria pollutants.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-does-any-of-this-have-to-do-with-covid-19&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What does any of this have to do with COVID-19?&lt;/h1&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

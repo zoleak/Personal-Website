@@ -5,9 +5,41 @@
     <description>Recent content in R on Kevin Zolea</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy;2019 Kevin Zolea</copyright>
-    <lastBuildDate>Wed, 08 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <copyright>&amp;copy;2020 Kevin Zolea</copyright>
+    <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="/categories/r/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Air quality &amp; the COVID-19 crisis in NJ</title>
+      <link>/post/air-quality-the-covid-19-crisis-in-nj/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/air-quality-the-covid-19-crisis-in-nj/</guid>
+      <description>
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Since my last post, I have seen some articles in the media discussing the link between COVID-19 and air quality. Being that I work for the &lt;a href=&#34;http://njaqinow.net&#34; target=&#34;_blank&#34;&gt;Bureau of Air Monitoring&lt;/a&gt;, I felt like it would only be right to perform my own analysis on the vast amount of data we collect. If you’d like to read over some of the above mentioned articles you can find them at the following links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.northjersey.com/story/news/coronavirus/2020/03/25/nj-coronavirus-states-air-quality-expected-rebound-amid-shutdown/2905998001/&#34; target=&#34;_blank&#34;&gt;New Jersey’s poor air quality expected to improve significantly amid coronavirus shutdown&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.nj.com/coronavirus/2020/04/njs-air-is-the-cleanest-its-been-since-911-due-to-coronavirus-shutdown.html&#34; target=&#34;_blank&#34;&gt;N.J.’s air is the cleanest it’s been since 9/11 due to coronavirus shutdown&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.nj.com/coronavirus/2020/04/njs-coronavirus-death-toll-is-likely-higher-thanks-to-decades-of-dirty-air.html&#34; target=&#34;_blank&#34;&gt;N.J.’s coronavirus death toll is likely higher thanks to decades of dirty air&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;motivation-for-this-post&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Motivation for this post&lt;/h1&gt;
+&lt;p&gt;I received a message from an old collegue of mine asking if I had taken a look at the air quality since the crisis started. This got me thinking about how I can use the power of R to create some plots and maps of the change of air quality throughout the state. I will be taking a look at a few of the criteria air pollutants at some of our major sites.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-are-criteria-air-pollutants&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What are criteria air pollutants?&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.epa.gov/criteria-air-pollutants&#34; target=&#34;_blank&#34;&gt;Criteria air pollutants&lt;/a&gt; are six common air pollutants of concern. The criteria pollutants are carbon monoxide, lead, nitrogen dioxide, ozone, particulate matter, and sulfur dioxide. These criteria air pollutants can cause health effects to the population at certain exposure levels. The Clean Air Act requires the &lt;a href=&#34;https://www.epa.gov&#34; target=&#34;_blank&#34;&gt;Environmental Protection Agency&lt;/a&gt; (EPA) to set standards called the &lt;a href=&#34;https://www.epa.gov/criteria-air-pollutants/naaqs-table&#34; target=&#34;_blank&#34;&gt;National Ambient Air Quality Standards&lt;/a&gt; (NAAQS) to limit the concentrations of these six criteria pollutants.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-does-any-of-this-have-to-do-with-covid-19&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What does any of this have to do with COVID-19?&lt;/h1&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Tracking Covid19 Cases Throughout NJ with R</title>
@@ -30,7 +62,7 @@
 covid19_data&amp;lt;-read_csv(&amp;quot;us_counties.csv&amp;quot;) #function that reads in csv files&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now that the data is read in.. lets check the structure of the data&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(covid19_data)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Classes &amp;#39;spec_tbl_df&amp;#39;, &amp;#39;tbl_df&amp;#39;, &amp;#39;tbl&amp;#39; and &amp;#39;data.frame&amp;#39;: 38197 obs. of  6 variables:
+&lt;pre&gt;&lt;code&gt;## Classes &amp;#39;spec_tbl_df&amp;#39;, &amp;#39;tbl_df&amp;#39;, &amp;#39;tbl&amp;#39; and &amp;#39;data.frame&amp;#39;: 61971 obs. of  6 variables:
 ##  $ date  : Date, format: &amp;quot;2020-01-21&amp;quot; &amp;quot;2020-01-22&amp;quot; ...
 ##  $ county: chr  &amp;quot;Snohomish&amp;quot; &amp;quot;Snohomish&amp;quot; &amp;quot;Snohomish&amp;quot; &amp;quot;Cook&amp;quot; ...
 ##  $ state : chr  &amp;quot;Washington&amp;quot; &amp;quot;Washington&amp;quot; &amp;quot;Washington&amp;quot; &amp;quot;Illinois&amp;quot; ...
@@ -125,11 +157,11 @@ NJ_covid19_shapes&amp;lt;-st_as_sf(NJ_covid19_shapes)
 covid_map&amp;lt;-ggplot()+
   geom_sf(data = NJ_counties,fill = &amp;quot;white&amp;quot;)+
   geom_sf(data = NJ_covid19_shapes,aes(fill=cases))+
-  ggtitle(&amp;quot;Spread of Covid19 Throughout New Jersey&amp;quot;)+
+  ggtitle(&amp;quot;Spread of COVID-19 Throughout New Jersey&amp;quot;)+
   xlab(&amp;quot;&amp;quot;)+
   ylab(&amp;quot;&amp;quot;)+
   labs(subtitle = &amp;quot;Date: {current_frame}&amp;quot;,
-       caption = &amp;quot;Date Source: The New York Times\nAuthor: Kevin Zolea&amp;quot;)+
+       caption = &amp;quot;Data Source: The New York Times\nAuthor: Kevin Zolea&amp;quot;)+
   cowplot::background_grid(major = &amp;quot;none&amp;quot;, minor = &amp;quot;none&amp;quot;) +
   theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(),
         axis.text.y = element_blank(), axis.ticks.y = element_blank(),

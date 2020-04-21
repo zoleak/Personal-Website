@@ -99,11 +99,11 @@ NJ_covid19_shapes<-st_as_sf(NJ_covid19_shapes)
 covid_map<-ggplot()+
   geom_sf(data = NJ_counties,fill = "white")+
   geom_sf(data = NJ_covid19_shapes,aes(fill=cases))+
-  ggtitle("Spread of Covid19 Throughout New Jersey")+
+  ggtitle("Spread of COVID-19 Throughout New Jersey")+
   xlab("")+
   ylab("")+
   labs(subtitle = "Date: {current_frame}",
-       caption = "Date Source: The New York Times\nAuthor: Kevin Zolea")+
+       caption = "Data Source: The New York Times\nAuthor: Kevin Zolea")+
   cowplot::background_grid(major = "none", minor = "none") +
   theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(),
         axis.text.y = element_blank(), axis.ticks.y = element_blank(),
